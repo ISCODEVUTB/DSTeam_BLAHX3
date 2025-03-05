@@ -1,12 +1,13 @@
 import unittest
 import os
-from Gestion_Paquete.location import Location
-from Gestion_Paquete.users import User
+from paqueges.Gestion_Paquete.location import Location
+from paqueges.Gestion_Paquete.users import User
+import bcrypt
 
 class TestUser(unittest.TestCase):
 
     def setUp(self):
-        """Se ejecuta antes de cada prueba. Inicializar datos para Location con los cuales se van a hacer las pruebas posteriormente"""
+        """Se ejecuta antes de cada prueba. Inicializar datos para Location y User con los cuales se van a hacer las pruebas posteriormente"""
         self.location = Location(
             country = "Colombia",
             department = "Bolivar",
@@ -15,7 +16,8 @@ class TestUser(unittest.TestCase):
             address2 = "La Serrezuela",
             zip_code = 130001
         )
-         # Obtén la contraseña desde la variable de entorno (si no está definida, se usa una contraseña predeterminada)
+
+        # Obtén la contraseña desde la variable de entorno (si no está definida, se usa una contraseña predeterminada)
         password = os.getenv("USER_PASSWORD", "default_password")
         self.user = User(
             surname = "Joe",
@@ -23,7 +25,7 @@ class TestUser(unittest.TestCase):
             national_id = "1037186420",
             email = "joedoe@hotmail.com",
             address = self.location,
-            password = password
+            password = "Gatito123*"
         )
 
     def test_user_init(self):
@@ -55,21 +57,21 @@ class TestUser(unittest.TestCase):
             "La dirección no se inicializó correctamente."
         )
 
-    """def test_password_hashpwd(self):
-        Verificar que el la función hashpwd cree un hash de la contraseña
+    def test_password_hashpwd(self):
+        """Verificar que el la función hashpwd cree un hash de la contraseña"""
         original_password = "Gatito123*".encode('utf-8')
-        hashed_password = self.user.hashpwd()
+        hashed_password = self.user.hashpwd(original_password)
         # Comprobar que la constraseña no sea igual al hash
         self.assertNotEqual(
             original_password,
             hashed_password,
             "La contraseña no debe ser igual al hash"
         )
+        #Comprobar que el hash creado coincida con la contraseña actual
         self.assertTrue(
             bcrypt.checkpw(original_password, hashed_password),
             "El hash de la contraseña no coincide con la original."
-        )"""
-
+        )
 
 if __name__ == "__main__":
     unittest.main()
