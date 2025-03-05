@@ -44,7 +44,7 @@ class TestPackage(unittest.TestCase):
         # weight_factor = 2 * 10 = 20
         # size_ factor = 10 * 0.5 = 5 (La longitud de dimensiones es 10 porque se cuentan las comillas que estable que el dato es string
         # price = base_price + weight_factor + size_factor = 10 + 20 + 5 = 35
-        expected_price = 10 + 2*10 + len("30+20*10")*0.5
+        expected_price = 10 + 2*10 + len("30*20*10")*0.5
         self.assertEqual (self.package.calculate_price(), expected_price, message)
 
         # Test #2: Paquete con peso de 5kg y dimensiones 2*5*5
