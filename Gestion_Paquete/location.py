@@ -52,7 +52,7 @@ class Location(object):
     def zip__code(self) -> int:
         return self.__zip_code
     
-    @zipCode.setter  
+    @zip_code.setter  
     def zip__code(self, value: int):
         self.__zip_code = value
 
