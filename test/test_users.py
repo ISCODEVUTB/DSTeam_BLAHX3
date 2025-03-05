@@ -1,4 +1,5 @@
 import unittest
+import os
 from Gestion_Paquete.location import Location
 from Gestion_Paquete.users import User
 
@@ -14,14 +15,15 @@ class TestUser(unittest.TestCase):
             address2 = "La Serrezuela",
             zip_code = 130001
         )
-
+         # Obtén la contraseña desde la variable de entorno (si no está definida, se usa una contraseña predeterminada)
+        password = os.getenv("USER_PASSWORD", "default_password")
         self.user = User(
             surname = "Joe",
             last_name = "Doe",
             national_id = "1037186420",
             email = "joedoe@hotmail.com",
             address = self.location,
-            password = "Gatito123*"
+            password = password
         )
 
     def test_user_init(self):
