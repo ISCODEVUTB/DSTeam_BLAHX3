@@ -47,5 +47,24 @@ class TestLocation(unittest.TestCase):
             "El código postal no se inicializó correctamente."
         )
 
+    def test_zip_code_type_error(self):
+        """Verifica que se lanza un TypeError cuando el código postal ingresado no es un número entero"""
+        with self.assertRaises(TypeError):
+            self.location.zip_code = 300015.5
+
+        with self.assertRaises(TypeError):
+            self.location.zip_code = 300004.0
+
+        with self.assertRaises(TypeError):
+            self.location.zip_code = "Juan"
+
+    def test_zip_code_value_error(self):
+        """Verifica que se lanza un ValueError cuando el código postal ingresado no es positivo"""
+        with self.assertRaises(ValueError):
+            self.location.zip_code = 0
+
+        with self.assertRaises(ValueError):
+            self.location.zip_code = -5
+
 if __name__ == "__main__":
     unittest.main()
