@@ -6,7 +6,7 @@ class Location:
         self._city = city
         self._address1 = address1
         self._address2 = address2
-        self._zip_code = zip_code
+        self.zip_code = zip_code  # Usa el setter para aplicar la validación
 
     @property
     def country(self) -> str:
@@ -66,10 +66,18 @@ class Location:
             f"Address 1: {self.address1}, Address 2: {self.address2}, Zip Code: {self.zip_code}"
         )
 
+    def __repr__(self):
+        return (
+            f"Location(country={repr(self.country)}, department={repr(self.department)}, "
+            f"city={repr(self.city)}, address1={repr(self.address1)}, "
+            f"address2={repr(self.address2)}, zip_code={self.zip_code})"
+        )
+
 
 def main():
     alex_location = Location("Colombia", "Bolívar", "Cartagena", "CRA", "Blas", 130001)
     print(alex_location)
+    print(repr(alex_location))
 
 
 if __name__ == "__main__":
