@@ -26,13 +26,13 @@ class Invoice:
 
     def __str__(self):
         return (f"Invoice(ID: {self.invoice_id}, Amount: ${self.amount:.2f}, "
-                f"Date: {self.invoice_date}, Status: {self.status})")
+                f"Date: {self.invoice_date.strftime('%Y-%m-%d'}, Status: {self.status})")
 
 
 # Prueba de la clase
 def main():
-    try_invoice = Invoice(14873, 254, date(2023, 4, 5), "Entregado")
-    print(try_invoice)
+    invoice_example = Invoice(14873, 254, date(2023, 4, 5), "Entregado")
+    print(invoice_example)
 
 
 if __name__ == "__main__":
