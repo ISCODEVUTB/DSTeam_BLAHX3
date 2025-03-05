@@ -11,7 +11,7 @@ class TestLocation(unittest.TestCase):
             city = "Cartagena de Indias",
             address1 = "Cra. 11 #39-21, San Diego",
             address2 = "La Serrezuela",
-            zip_Ccde = 130001
+            zip_cde = 130001
         )
 
     def test_init(self):
@@ -47,5 +47,5 @@ class TestLocation(unittest.TestCase):
             "El código postal no se inicializó correctamente."
         )
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     unittest.main()
