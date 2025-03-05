@@ -11,7 +11,7 @@ class TestLocation(unittest.TestCase):
             city="Cartagena de Indias",
             address1="Cra. 11 #39-21, San Diego",
             address2="La Serrezuela",
-            zipCode=130001
+            zip_code=130001
         )
 
     def test_init(self):
@@ -22,7 +22,7 @@ class TestLocation(unittest.TestCase):
         self.assertEqual(self.location.city, "Cartagena de Indias", message)
         self.assertEqual(self.location.address1, "Cra. 11 #39-21, San Diego", message)
         self.assertEqual(self.location.address2, "La Serrezuela", message)
-        self.assertEqual(self.location.zipCode, 130001, message)
+        self.assertEqual(self.location.zip_code, 130001, message)
 
     def test_setters_getters(self):
         """Verificar que los setters y getters funcionen correctamente."""
@@ -31,14 +31,14 @@ class TestLocation(unittest.TestCase):
         self.location.city = "CABA"
         self.location.address1 = "Av. 9 de Julio"
         self.location.address2 = "Obelisco"
-        self.location.zipCode = 1000
+        self.location.zip_code = 1000
 
         self.assertEqual(self.location.country, "Argentina")
         self.assertEqual(self.location.department, "Buenos Aires")
         self.assertEqual(self.location.city, "CABA")
         self.assertEqual(self.location.address1, "Av. 9 de Julio")
         self.assertEqual(self.location.address2, "Obelisco")
-        self.assertEqual(self.location.zipCode, 1000)
+        self.assertEqual(self.location.zip_code, 1000)
 
 if __name__ == "__main__":
     unittest.main()
