@@ -57,7 +57,7 @@ class Location(object):
     def zip_code(self, value):
         if not isinstance(value, int):
             raise TypeError("El código postal debe ser un número entero")
-        if value <= 0:
+        if value < 0:
             raise ValueError("El código postal debe ser un número entero positivo")
         self.__zip_code = value
 
