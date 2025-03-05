@@ -58,8 +58,8 @@ class Location(object):
         self.__zip_code = value
 
     def __str__(self):
-        return (f"Country: {self.__country}, Department: {self.__department}, City: {self.__city}, "
-                f"Address 1: {self.__address1}, Address 2: {self.__address2}, Zip Code: {self.__zip_code}")
+        return (f"Country: {self.country}, Department: {self.department}, City: {self.city}, "
+                f"Address 1: {self.address1}, Address 2: {self.address2}, Zip Code: {self.zip_code}")
 
 # PRUEBA DE LA CLASE
 def main():
