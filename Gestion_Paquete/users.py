@@ -58,8 +58,8 @@ class User(object):
         return f"Name: {self._name}, Last name: {self._last_name}, National id: {self._national_id}, Email: {self._email}, Address: ({self._address}), Password: {self._password}"
 
 def main():
-    alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", 130001)
-    alex = User("Alex", "Villarreal", "1043652", "a@gmail.com", alex_location, "Rococco")
+    alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Danis", 130001)
+    alex = User("Alex", "Prens", "1944682", "a@gmail.com", alex_location, "Rococco")
     print(alex)
     
 
