@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copiar todo el código fuente al contenedor
 COPY . .
 
-# Establecer la carpeta `Gestion` como directorio de trabajo
-WORKDIR /app/Gestion
+# Establecer la carpeta `Gestion_Paquete` como directorio de trabajo
+WORKDIR /app/Gestion_Paquete
 
 # Ejecutar el script principal
 CMD ["python", "main.py"]
