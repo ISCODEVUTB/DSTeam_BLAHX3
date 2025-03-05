@@ -52,9 +52,10 @@ class Location(object):
     def zipCode(self) -> int:
         return self.__zipCode
     
-    @department.setter
+    @zipCode.setter  
     def zipCode(self, value: int):
         self.__zipCode = value
+
     
     def __str__(self):
         return f"Country: {self.__country}, Department: {self.__department}, City: {self.__city}, Address 1: {self.__address1}, Address 2: {self.__address2}, Zip Code: {self.__zipCode}"
