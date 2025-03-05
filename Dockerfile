@@ -22,4 +22,4 @@ USER appuser
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Comando de ejecución (esto ejecuta la aplicación, pero no las pruebas)
-CMD ["python", "Gestion_Paquete/main.py"]
+CMD ["python", "main.py"]
