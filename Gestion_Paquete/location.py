@@ -1,0 +1,68 @@
+class Location(object):
+    def __init__(self, country: str, department: str, city: str,
+                 address1: str, address2: str, zipCode: int):
+        self.__country = country
+        self.__department = department
+        self.__city = city
+        self.__address1 = address1
+        self.__address2 = address2
+        self.__zipCode = zipCode
+    
+    @property
+    def country(self) -> str:
+        return self.__country
+    
+    @country.setter
+    def country(self, value: str):
+        self.__country = value
+    
+    @property
+    def department(self) -> str:
+        return self.__department
+    
+    @department.setter
+    def department(self, value: str):
+        self.__department = value
+    
+    @property
+    def city(self) -> str:
+        return self.__city
+    
+    @city.setter
+    def city(self, value: str):
+        self.__city = value
+    
+    @property
+    def address1(self) -> str:
+        return self.__address1
+    
+    @address1.setter
+    def address1(self, value: str):
+        self.__address1 = value
+    
+    @property
+    def address2(self) -> str:
+        return self.__address2
+    
+    @address2.setter
+    def address2(self, value: str):
+        self.__address2 = value
+    
+    @property
+    def zipCode(self) -> int:
+        return self.__zipCode
+    
+    @department.setter
+    def zipCode(self, value: int):
+        self.__zipCode = value
+    
+    def __str__(self):
+        return f"Country: {self.__country}, Department: {self.__department}, City: {self.__city}, Address 1: {self.__address1}, Address 2: {self.__address2}, Zip Code: {self.__zipCode}"
+    
+
+def main():
+    alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", 130001)
+    print (alex_location)
+
+if __name__ == '__main__':
+    main()
