@@ -1,5 +1,5 @@
 import unittest
-from Gestion_Paquete.location import Location
+from location import Location
 
 class TestLocation(unittest.TestCase):
 
@@ -11,7 +11,7 @@ class TestLocation(unittest.TestCase):
             city = "Cartagena de Indias",
             address1 = "Cra. 11 #39-21, San Diego",
             address2 = "La Serrezuela",
-            zip_cde = 130001
+            zip_code = 130001
         )
 
     def test_init(self):
