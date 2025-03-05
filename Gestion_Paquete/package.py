@@ -44,7 +44,7 @@ class Package:
         return base_price + weight_factor + size_factor
 
     def __str__(self):
-        return f"Package(ID: {self.__package_id}, Weight: {self.__weight} kg, Dimensions: {self.__dimensions}, Type: {self.__package_type}, Price: ${self.calculate_price():.2f})"
+        return f"Package(ID: {self.package_id}, Weight: {self.weight} kg, Dimensions: {self.dimensions}, Type: {self.package_type}, Price: ${self.calculate_price():.2f})"
 
 def main():
     try_package = Package(10487, 25, "25*24", "basico")
