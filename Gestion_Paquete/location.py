@@ -1,6 +1,6 @@
 class Location(object):
     def __init__(self, country: str, department: str, city: str,
-                 address1: str, address2: str, zip__code: int):
+                 address1: str, address2: str, zip_code: int):
         self.__country = country
         self.__department = department
         self.__city = city
