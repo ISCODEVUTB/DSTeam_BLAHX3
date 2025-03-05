@@ -1,56 +1,56 @@
 class Location:
     def __init__(self, country: str, department: str, city: str,
                  address1: str, address2: str, zip_code: int):
-        self.__country = country
-        self.__department = department
-        self.__city = city
-        self.__address1 = address1
-        self.__address2 = address2
-        self.__zip_code = zip_code
+        self._country = country
+        self._department = department
+        self._city = city
+        self._address1 = address1
+        self._address2 = address2
+        self._zip_code = zip_code
 
     @property
     def country(self) -> str:
-        return self.__country
+        return self._country
 
     @country.setter
     def country(self, value: str):
-        self.__country = value
+        self._country = value
 
     @property
     def department(self) -> str:
-        return self.__department
+        return self._department
 
     @department.setter
     def department(self, value: str):
-        self.__department = value
+        self._department = value
 
     @property
     def city(self) -> str:
-        return self.__city
+        return self._city
 
     @city.setter
     def city(self, value: str):
-        self.__city = value
+        self._city = value
 
     @property
     def address1(self) -> str:
-        return self.__address1
+        return self._address1
 
     @address1.setter
     def address1(self, value: str):
-        self.__address1 = value
+        self._address1 = value
 
     @property
     def address2(self) -> str:
-        return self.__address2
+        return self._address2
 
     @address2.setter
     def address2(self, value: str):
-        self.__address2 = value
+        self._address2 = value
 
     @property
     def zip_code(self) -> int:
-        return self.__zip_code
+        return self._zip_code
 
     @zip_code.setter
     def zip_code(self, value: int):
@@ -58,16 +58,19 @@ class Location:
             raise TypeError("El código postal debe ser un número entero")
         if value <= 0:
             raise ValueError("El código postal debe ser un número entero positivo")
-        self.__zip_code = value
+        self._zip_code = value
 
-    def __str__(self) -> str:
+    def __str__(self):
         return (
-            f"Country: {self.country}, Department: {self.department}, City: {self.city}, "
+            f"Country: {self.country}, Department: {self.department}, City: {self.city},\n"
             f"Address 1: {self.address1}, Address 2: {self.address2}, Zip Code: {self.zip_code}"
         )
 
 
-# PRUEBA DE LA CLASE
-if __name__ == "__main__":
-    alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", 130001)
+def main():
+    alex_location = Location("Colombia", "Bolívar", "Cartagena", "CRA", "Blas", 130001)
     print(alex_location)
+
+
+if __name__ == "__main__":
+    main()
