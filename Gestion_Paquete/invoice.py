@@ -31,7 +31,7 @@ class Invoice:
 
 # Prueba de la clase
 def main():
-    invoice_example = Invoice(14873, 254, date(2023, 4, 5), "Entregado")
+    invoice_example = Invoice(14873, 254, invoice_date = date(2023, 4, 5), status = "Entregado")
     print(invoice_example)
 
 
