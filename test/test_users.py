@@ -18,7 +18,7 @@ class TestUser(unittest.TestCase):
         )
 
         # Obtén la contraseña desde la variable de entorno (si no está definida, se usa una contraseña predeterminada)
-        password = os.getenv("USER_PASSWORD", "Gatito123*")
+        password = os.getenv("USER_PASSWORD", "default_password")
         self.user = User(
             surname = "Joe",
             last_name = "Doe",
@@ -59,7 +59,7 @@ class TestUser(unittest.TestCase):
 
     def test_password_hashpwd(self):
         """Verificar que el la función hashpwd cree un hash de la contraseña"""
-        original_password = "Gatito123*".encode('utf-8')
+        original_password = "default_password".encode('utf-8')
         hashed_password = self.user.hashpwd(original_password)
         # Comprobar que la constraseña no sea igual al hash
         self.assertNotEqual(
