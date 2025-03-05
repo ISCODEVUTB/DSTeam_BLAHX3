@@ -29,4 +29,4 @@ jobs:
         run: pytest --version  # Verifica si pytest está disponible
 
       - name: Ejecutar pruebas
-        run: pytest tests/
+        run: pytest test/
