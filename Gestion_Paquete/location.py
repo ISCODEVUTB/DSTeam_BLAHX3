@@ -53,8 +53,12 @@ class Location(object):
     def zip_code(self) -> int:
         return self.__zip_code
     
-    @zip_code.setter  
-    def zip_code(self, value: int):
+    @zip_code.setter
+    def zip_code(self, value):
+        if not isinstance(value, int):
+            raise TypeError("El código postal debe ser un número entero")
+        if value < 0:
+            raise ValueError("El código postal debe ser un número entero positivo")
         self.__zip_code = value
 
     def __str__(self):
