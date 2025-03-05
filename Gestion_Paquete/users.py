@@ -1,5 +1,5 @@
 from bcrypt import hashpw, gensalt
-from Gestion_Paquete.location import Location
+from location import Location
 
 class User(object):
     def __init__(self, surname: str, last_name: str, national_id: str, 
@@ -55,7 +55,7 @@ class User(object):
         return hashpw(pwd, gensalt())
 
     def __str__(self):
-        return f"Name: {self._name}, Last name: {self._last_name}, National id: {self._national_id}, Email: {self._email}, Address: ({self._address}), Password: {self._password}"
+        return f"Name: {self.name}, Last name: {self.last_name}, National id: {self.national_id}, Email: {self.email}, Address: ({self.address})"
 
 def main():
     alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Danis", 130001)
