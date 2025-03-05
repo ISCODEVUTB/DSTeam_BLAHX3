@@ -1,0 +1,17 @@
+# Ignorar archivos sensibles
+.env
+config/secrets.json
+secrets/
+keys/
+
+# Ignorar archivos innecesarios
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+*.db
+venv/
+node_modules/
+.git/
