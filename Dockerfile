@@ -1,20 +1,22 @@
-# Usar la imagen base de Python
+# Usa una imagen oficial de Python
 FROM python:3.10
 
-# Establecer el directorio de trabajo en el contenedor
+# Crea un usuario sin privilegios y usa /app como directorio de trabajo
+RUN useradd -m appuser
 WORKDIR /app
 
-# Copiar los archivos de dependencias primero (para optimizar la caché de Docker)
-COPY requirements.txt .
+# Copia primero solo el archivo de dependencias para aprovechar la caché de Docker
+COPY --chown=appuser:appuser requirements.txt /app/
 
-# Instalar las dependencias
+# Instala las dependencias
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar todo el código fuente al contenedor
-COPY . .
+# Copia únicamente los archivos y directorios relevantes del código
+COPY --chown=appuser:appuser Gestion_Paquete /app/Gestion_Paquete
+COPY --chown=appuser:appuser main.py /app/main.py
 
-# Establecer la carpeta `Gestion_Paquete` como directorio de trabajo
-WORKDIR /app/Gestion_Paquete
+# Cambia al usuario sin privilegios
+USER appuser
 
-# Ejecutar el script principal
+# Comando de ejecución
 CMD ["python", "main.py"]
