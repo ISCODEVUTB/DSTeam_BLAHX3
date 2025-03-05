@@ -28,11 +28,13 @@ jobs:
 
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$PWD:$PYTHONPATH" >> $GITHUB_ENV
-              
+
       - name: Limpiar caché de GitHub Actions
         run: rm -rf ~/.cache/pip __pycache__ .pytest_cache
 
       - name: Run tests
+        env:
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}  
         run: PYTHONPATH=$PWD python -m pytest test/
 
       - name: Debug PYTHONPATH (en caso de errores)
