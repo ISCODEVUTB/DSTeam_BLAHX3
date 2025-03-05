@@ -1,5 +1,5 @@
 from bcrypt import hashpw, gensalt
-from location import Location
+from Gestion_Paquete.location import Location
 
 class User(object):
     def __init__(self, surname: str, last_name: str, national_id: str, 
