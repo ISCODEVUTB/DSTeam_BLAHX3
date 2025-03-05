@@ -26,7 +26,7 @@ class Invoice:
 
     def __str__(self):
         return (f"Invoice(ID: {self.invoice_id}, Amount: ${self.amount:.2f}, "
-                f"Date: {self.invoice_date.strftime('%Y-%m-%d'}, Status: {self.status})")
+                f"Date: {self.invoice_date.strftime('%Y-%m-%d')}, Status: {self.status})")
 
 
 # Prueba de la clase
