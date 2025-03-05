@@ -1,0 +1,11 @@
+# Ignorar archivos de Python innecesarios
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorar entornos virtuales
+.env
+venv/
+
+# Ignorar archivos de Git
+.git/
