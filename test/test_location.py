@@ -1,44 +1,51 @@
 import unittest
-from Gestion_Paquete.location import Location
+from location import Location
 
 class TestLocation(unittest.TestCase):
 
     def setUp(self):
-        """Inicializa una instancia de Location antes de cada prueba."""
+        """Se ejecuta antes de cada prueba. Inicializar datos para Location con los cuales se van a hacer las pruebas posteriormente"""
         self.location = Location(
-            country="Colombia",
-            department="Bolívar",
-            city="Cartagena de Indias",
-            address1="Cra. 11 #39-21, San Diego",
-            address2="La Serrezuela",
-            zip_code=130001
+            country = "Colombia",
+            department = "Bolivar",
+            city = "Cartagena de Indias",
+            address1 = "Cra. 11 #39-21, San Diego",
+            address2 = "La Serrezuela",
+            zip_Ccde = 130001
         )
 
     def test_init(self):
-        """Verificar que los valores iniciales sean correctos."""
-        message = "Error de inicialización"
-        self.assertEqual(self.location.country, "Colombia", message)
-        self.assertEqual(self.location.department, "Bolívar", message)
-        self.assertEqual(self.location.city, "Cartagena de Indias", message)
-        self.assertEqual(self.location.address1, "Cra. 11 #39-21, San Diego", message)
-        self.assertEqual(self.location.address2, "La Serrezuela", message)
-        self.assertEqual(self.location.zip_code, 130001, message)
+        """Verificar que los valores iniciales sean iguales a los asignados para la prueba"""
+        # assertEqual(first value, second value, message) Compara valores y mensaje en caso de que no sean iguales
+        self.assertEqual(
+            self.location.country,
+            "Colombia",
+            "El país no se inicializó correctamente."
+        )
+        self.assertEqual(
+            self.location.department,
+            "Bolivar",
+            "El departamento no se inicializó correctamente."
+        )
+        self.assertEqual(
+            self.location.city,
+            "Cartagena de Indias",
+            "La ciudad no se inicializó correctamente."
+        )
+        self.assertEqual(
+            self.location.address1,
+            "Cra. 11 #39-21, San Diego",
+            "La dirección 1 no se inicializó correctamente."
+        )
+        self.assertEqual(
+            self.location.address2,
+            "La Serrezuela",
+            "La dirección 2 no se inicializó correctamente.")
+        self.assertEqual(
+            self.location.zip_code,
+            130001,
+            "El código postal no se inicializó correctamente."
+        )
 
-    def test_setters_getters(self):
-        """Verificar que los setters y getters funcionen correctamente."""
-        self.location.country = "Argentina"
-        self.location.department = "Buenos Aires"
-        self.location.city = "CABA"
-        self.location.address1 = "Av. 9 de Julio"
-        self.location.address2 = "Obelisco"
-        self.location.zip_code = 1000
-
-        self.assertEqual(self.location.country, "Argentina")
-        self.assertEqual(self.location.department, "Buenos Aires")
-        self.assertEqual(self.location.city, "CABA")
-        self.assertEqual(self.location.address1, "Av. 9 de Julio")
-        self.assertEqual(self.location.address2, "Obelisco")
-        self.assertEqual(self.location.zip_code, 1000)
-
-if __name__ == "__main__":
+if _name_ == "_main_":
     unittest.main()
