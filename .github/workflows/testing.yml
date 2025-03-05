@@ -32,11 +32,6 @@ jobs:
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
         run: PYTHONPATH=$PWD python -m pytest test/
 
-      # Paso opcional: Análisis de calidad de código con SonarCloud
-      - name: SonarCloud analysis
-        uses: sonarsource/sonarcloud-github-action@v1
-        with:
-          token: ${{ secrets.SONAR_TOKEN }}
           
       # Depuración: Si ocurre un error, imprime el sys.path
       - name: Debug PYTHONPATH (in case of errors)
