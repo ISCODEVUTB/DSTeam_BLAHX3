@@ -1,7 +1,7 @@
 import unittest
 import os
-from paqueges.Gestion_Paquete.location import Location
-from paqueges.Gestion_Paquete.users import User
+from Gestion_Paquete.location import Location
+from Gestion_Paquete.users import User
 import bcrypt
 
 class TestUser(unittest.TestCase):
