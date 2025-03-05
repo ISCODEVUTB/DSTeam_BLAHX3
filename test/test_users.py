@@ -59,7 +59,7 @@ class TestUser(unittest.TestCase):
 
     def test_password_hashpwd(self):
         """Verificar que el la función hashpwd cree un hash de la contraseña"""
-        original_password = password.encode('utf-8')
+        original_password = self.user.password.encode('utf-8')
         hashed_password = self.user.hashpwd(original_password)
         # Comprobar que la constraseña no sea igual al hash
         self.assertNotEqual(
