@@ -33,7 +33,7 @@ jobs:
         run: PYTHONPATH=$PWD python -m pytest test/
 
       - name: SonarCloud analysis
-        uses: sonarsource/sonarcloud-github-action@v1
+        uses: sonarsource/sonarcloud-github-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
