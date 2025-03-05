@@ -18,7 +18,7 @@ class TestUser(unittest.TestCase):
         )
 
         # Obtén la contraseña desde la variable de entorno (si no está definida, se usa una contraseña predeterminada)
-        password = os.getenv("USER_PASSWORD", "default_password")
+        password = os.getenv("USER_PASSWORD", "Gatito123*")
         self.user = User(
             surname = "Joe",
             last_name = "Doe",
