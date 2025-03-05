@@ -16,7 +16,7 @@ class TestLocation(unittest.TestCase):
 
     def test_init(self):
         """Verificar que los valores iniciales sean iguales a los asignados para la prueba"""
-        # assertEqual(first value, second value, message) Compara valores y mensaje en caso de que no sean iguales
+        # assertEqual (primer valor, segundo valor, mensaje) Compara los valores y muestra un mensaje si no son iguales.
         self.assertEqual(
             self.location.country,
             "Colombia",
@@ -49,13 +49,13 @@ class TestLocation(unittest.TestCase):
 
     def test_zip_code_type_error(self):
         """Verifica que se lanza un TypeError cuando el código postal ingresado no es un número entero"""
-        with self.assertRaises(TypeError):
+        with self.assertRaises(TypeError, msg = "El código postal debe ser un número entero"):
             self.location.zip_code = 300015.5
 
-        with self.assertRaises(TypeError):
+        with self.assertRaises(TypeError, msg = "El código postal debe ser un número entero"):
             self.location.zip_code = 300004.0
 
-        with self.assertRaises(TypeError):
+        with self.assertRaises(TypeError, msg = "El código postal debe ser un número entero"):
             self.location.zip_code = "Juan"
 
     def test_zip_code_value_error(self):
@@ -66,5 +66,7 @@ class TestLocation(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.location.zip_code = -5
 
+
 if __name__ == "__main__":
     unittest.main()
+
