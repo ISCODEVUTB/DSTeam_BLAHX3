@@ -8,7 +8,7 @@ class TestInvoice(unittest.TestCase):
         self.invoice = Invoice(
             invoice_id = 987456,
             amount = 100,
-            date = date(2024, 2, 18),
+            invoice_date = date(2024, 2, 18),
             status = "Entregado"
         )
 
@@ -25,7 +25,7 @@ class TestInvoice(unittest.TestCase):
             "El monto de la factura no se inicializó correctamente."
         )
         self.assertEqual(
-            self.invoice.date,
+            self.invoice.invoice_date,
             date(2024, 2, 18),
             "La fecha de creación de la factura no se inicializó correctamente."
         )
