@@ -47,7 +47,7 @@ class User(object):
     def address(self) -> Location:
         return self._address
     
-    @name.setter
+    @address.setter
     def address(self, value: Location):
         self._address = value
 
