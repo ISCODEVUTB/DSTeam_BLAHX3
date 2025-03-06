@@ -31,10 +31,10 @@ class Package:
             __package_type (str): The type of package, determined dynamically.
         """
         self.__package_id = str(uuid.uuid4())  # Generate a unique package ID
-        self.__weight = validate_positive_value(weight)
-        self.__length = validate_positive_value(length)
-        self.__width = validate_positive_value(width)
-        self.__height = validate_positive_value(height)
+        self.__weight = self.validate_positive_value(weight)
+        self.__length = self.validate_positive_value(length)
+        self.__width = self.validate_positive_value(width)
+        self.__height = self.validate_positive_value(height)
         self.__package_type = self.typing_package()
 
     @property
