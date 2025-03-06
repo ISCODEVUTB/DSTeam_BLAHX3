@@ -1,6 +1,6 @@
 import unittest
-from Gestion_Paquete.track import Track
-from Gestion_Paquete.delivery import Delivery
+from paqueges.Gestion_Paquete.track import Track
+from paqueges.Gestion_Paquete.delivery import Delivery
 
 
 class TestDelivery(unittest.TestCase):
@@ -41,6 +41,15 @@ class TestDelivery(unittest.TestCase):
             "Barranquilla",
             "The position of the package was not initialized correctly."
         )
+
+    def test_new_position(self):
+        """Test if the update_position method updates correctly the position of the delivery."""
+        # Update the position
+        new_position = "Cali"
+        self.delivery.update_position(new_position)
+
+        # Verify that the position has been updated correctly
+        self.assertEqual(self.delivery.position, new_position, "Position was not updated correctly.")
 
 
 if __name__ == "__main__":
