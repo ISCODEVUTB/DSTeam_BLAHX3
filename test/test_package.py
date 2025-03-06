@@ -1,7 +1,7 @@
 import unittest
 from random import randbytes
-from package import Package
-from package_types import PackageTypes
+from Gestion_Paquete.package import Package
+from Gestion_Paquete.package_types import PackageTypes
 
 class TestPackage(unittest.TestCase):
     def setUp(self):
