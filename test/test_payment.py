@@ -6,7 +6,7 @@ from Gestion_Paquete.payment import PaymentMethod
 
 class TestPayment(unittest.TestCase):
     def setUp(self):
-        """This is executed before each test. Initializes data for Invoice which will be used for the tests later"""
+        """This is executed before each test. Initializes data for Payment which will be used for the tests later"""
         self.payment = Payment(
             payment_id=36987,
             amount=99.99,
