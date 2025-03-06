@@ -1,4 +1,4 @@
-# import random
+from typing import List
 from flask import Flask
 from flask_seasurf import SeaSurf
 from flask_wtf import CSRFProtect
@@ -13,7 +13,8 @@ csrf.init_app(app)
 csrf = SeaSurf(app)  # Enable CSRF protection
 
 in_user: User = [None]
-recipient_list: list = []
+recipient_list: List[User] = []
+order_list: List[Order] = []
 
 def main():
     """
@@ -245,10 +246,20 @@ def new_order():
                 print("Package deleted successfully")
             else:
                 print("Invalid package ID. No package deleted.")
-        elif option == 4:
-            receipt()
-        elif option == 5:
-            return
+        elif option > 3 and package_list is not None:
+            order_list.append(Order(in_user, recipient_list[0], package_list))
+            if option == 4:
+                receipt()
+                return
+            elif option == 5:
+                print(order_list[0])
+                option = 0
+                while option not in ('y', 'n'):
+                    option = input("Quieres parar la Orden? (Y/N)").lower()
+                    if option == "y":
+                        return
+                    elif option == "n":
+                        continue
 
 def receipt():
     """
