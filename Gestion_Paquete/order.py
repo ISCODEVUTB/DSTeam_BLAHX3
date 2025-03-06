@@ -14,14 +14,14 @@ Classes:
     - Location: Represents an address with an ID, country, department, 
     city, address1, address2, and zip code.
 """
-from random import randbytes
+import uuid
 from typing import List
 from Gestion_paquete.users import User
 from Gestion_paquete.package import Package
 
 
 class Order:
-    def __init__(self, order_id: int, sender: User, receiver: User, 
+    def __init__(self, order_id: str, sender: User, receiver: User, 
                  packages: List[Package], status: str):
         """Initializes an Order with sender, receiver, packages, and status.
 
@@ -38,14 +38,14 @@ class Order:
             __packages (List[Package]): A list of packages included in the order.
             __status (str): The current status of the order.
         """
-        self.__order_id = randbytes(5).hex()  # Generate a unique order ID
+        self.__order_id = str(uuid.uuid4())  # Generate a unique order ID
         self.__sender = sender
         self.__receiver = receiver
         self.__packages = packages
         self.__status = status
 
     @property
-    def order_id(self) -> int:
+    def order_id(self) -> str:
         """Gets the unique order ID.
 
         Returns:
@@ -133,7 +133,7 @@ class Order:
         """
         self.__packages.append(package)
 
-    def remove_package(self, package_id: int):
+    def remove_package(self, package_id: str):
         """Removes a package from the order by package ID.
 
         Args:
