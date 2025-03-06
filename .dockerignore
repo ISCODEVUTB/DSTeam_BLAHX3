@@ -1,11 +1,9 @@
-# Ignorar el control de versiones
-.git
-.gitignore
-
-# Ignorar archivos de configuración locales o sensibles
+__pycache__/
 .env
-config/secrets.yml
-
-# Ignorar archivos temporales y de logs
-*.log
-tmp/
+*.pyc
+*.pyo
+*.pyd
+.vscode/
+.idea/
+.DS_Store
+.git/
