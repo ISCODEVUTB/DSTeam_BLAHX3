@@ -1,4 +1,4 @@
-from Gestion_Paquete.track import Track
+from track import Track
 
 
 class Delivery:
@@ -13,21 +13,41 @@ class Delivery:
     def order(self) -> int:
         return self.__order
 
+    @order.setter
+    def order(self, value: int):
+        self.__order = value
+
     @property
     def status(self) -> str:
         return self.__status
+
+    @status.setter
+    def status(self, value: str):
+        self.__status = value
 
     @property
     def track(self) -> Track:
         return self.__track
 
+    @track.setter
+    def track(self, value: Track):
+        self.__track = value
+
     @property
     def driver_id(self) -> int:
         return self.__driver_id
 
+    @driver_id.setter
+    def driver_id(self, value: int):
+        self.__driver_id = value
+
     @property
     def position(self) -> str:
         return self.__position
+
+    @position.setter
+    def position(self, value: str):
+        self.__position = value
 
     def update_position(self, new_position: str):
         self.__position = new_position
