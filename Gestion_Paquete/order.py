@@ -1,5 +1,5 @@
-from users import User
-from package import Package
+from Gestion_Paquete.users import User
+from Gestion_Paquete.package import Package
 
 class Order:
     def __init__(self, order_id: int, user: User, packages: list, status: str):
