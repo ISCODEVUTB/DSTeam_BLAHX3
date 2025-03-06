@@ -15,76 +15,61 @@ class TestPackage(unittest.TestCase):
         )
 
     def test_package_init(self):
-        """Verify that the initial values are equal to the ones assigned for the test."""
-        self.assertEqual(
-            self.package.weight,
-            10,
-            "The package weight was not initialized correctly."
-        )
-        self.assertEqual(
-            self.package.dimensions,
-            "2.0x1.5x0.5",
-            "The package dimensions were not initialized correctly."
-        )
-        self.assertEqual(
-            self.package.package_type,
-            PackageTypes.ESTANDAR.name,
-            "The package type was not initialized correctly."
-        )
+        """Verify that the initial values are correct."""
+        self.assertEqual(self.package.weight, 10, "Incorrect weight initialization.")
+        self.assertEqual(self.package.dimensions, "2.0x1.5x0.5", "Incorrect dimensions initialization.")
+        self.assertEqual(self.package.package_type, PackageTypes.ESTANDAR.name, "Incorrect package type.")
 
     def test_calculate_price(self):
-        """Ensure that the calculate_price function is working correctly."""
-        message = "The price calculation is incorrect."
-        # Test #1: Package with 10kg weight and dimensions "2.0x1.5x0.5"
-        expected_price = 10 + 2 * 10 + (2.0 * 1.5 * 0.5) * 0.5  # Base price + weight factor + size factor
-        self.assertEqual(self.package.calculate_price(), expected_price, message)
+        """Ensure that the calculate_price function works correctly."""
+        expected_price = 10 + 2 * 10 + (2.0 * 1.5 * 0.5) * 0.5
+        self.assertEqual(self.package.calculate_price(), expected_price, "Incorrect price calculation.")
 
-        # Test #2: Package with 5kg weight and dimensions 2x5x5
         package2 = Package(5.2, 2, 5, 5)
         expected_price = 10 + 2 * 5.2 + (2 * 5 * 5) * 0.5
-        self.assertEqual(package2.calculate_price(), expected_price, message)
+        self.assertEqual(package2.calculate_price(), expected_price, "Incorrect price calculation.")
 
     def test_invalid_height_negative(self):
-        """Ensure that a ValueError is raised when an invalid height is provided."""
-        with self.assertRaises(ValueError, msg="Height must be a positive number."):
-            self.package.height = -1  # Invalid height (negative value)
-    
+        """Ensure ValueError is raised for negative height."""
+        with self.assertRaises(ValueError):
+            Package(10, 2, 1.5, -1)
+
     def test_invalid_height_zero(self):
-        """Ensure that a ValueError is raised when an invalid height is provided."""
-        with self.assertRaises(ValueError, msg="Height must be grater than zero."):
-            self.package.height = 0  # Invalid height (negative value)
-    
+        """Ensure ValueError is raised for zero height."""
+        with self.assertRaises(ValueError):
+            Package(10, 2, 1.5, 0)
+
     def test_invalid_length_negative(self):
-        with self.assertRaises(ValueError, msg="Length must be a positive number."):
-            self.package.length = -1  # Invalid length (negative value)
-    
+        with self.assertRaises(ValueError):
+            Package(10, -1, 1.5, 0.5)
+
     def test_invalid_length_zero(self):
-        with self.assertRaises(ValueError, msg="Length must be greater than zero."):
-            self.package.length = 0  # Invalid length (zero value)
-    
+        with self.assertRaises(ValueError):
+            Package(10, 0, 1.5, 0.5)
+
     def test_invalid_width_negative(self):
-        with self.assertRaises(ValueError, msg="Width must be a positive number."):
-            self.package.width = -1  # Invalid width (negative value)
-    
+        with self.assertRaises(ValueError):
+            Package(10, 2, -1, 0.5)
+
     def test_invalid_width_zero(self):
-        with self.assertRaises(ValueError, msg="Width must be greater than zero."):
-            self.package.width = 0  # Invalid width (zero value)
-    
+        with self.assertRaises(ValueError):
+            Package(10, 2, 0, 0.5)
+
     def test_invalid_weight_negative(self):
-        with self.assertRaises(ValueError, msg="Weight must be a positive number."):
-            self.package.weight = -1  # Invalid weight (negative value)
-    
+        with self.assertRaises(ValueError):
+            Package(-1, 2, 1.5, 0.5)
+
     def test_invalid_weight_zero(self):
-        with self.assertRaises(ValueError, msg="Weight must be greater than zero."):
-            self.package.weight = 0  # Invalid weight (zero value)
+        with self.assertRaises(ValueError):
+            Package(0, 2, 1.5, 0.5)
 
     def test_invalid_package_type(self):
-        """Test to ensure the package type is correctly initialized."""
+        """Ensure package type is correctly assigned."""
         package_invalid_type = Package(15, 1.0, 2.0, 0.5)
         self.assertEqual(package_invalid_type.package_type, PackageTypes.ESTANDAR.name)
 
     def test_package_id(self):
-        """Test that the package ID is unique and generated correctly."""
+        """Ensure that package ID is unique."""
         package_id1 = self.package.package_id
         package_id2 = Package(5.2, 2, 5, 5).package_id
         self.assertNotEqual(package_id1, package_id2, "Package IDs should be unique.")
@@ -92,4 +77,4 @@ class TestPackage(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-  
+
