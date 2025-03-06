@@ -145,4 +145,4 @@ class Order:
 
     def __str__(self):
         package_info = ', '.join(str(pkg) for pkg in self.__packages)
-        return f"Order(ID: {self.order_id}, User: {self.user.name}, Packages: [{package_info}], Status: {self.status})"
+        return f"Order(ID: {self.order_id}, Sender: {self.sender.name}, Receiver: {self.receiver.name}, Packages: [{package_info}], Status: {self.status})"
