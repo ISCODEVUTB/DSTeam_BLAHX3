@@ -1,10 +1,13 @@
 # import random
+from flask flask import Flask
 from Gestion_Paquete.users import User
 from Gestion_Paquete.location import Location
 from Gestion_Paquete.package import Package
 
 in_user: User = [None]
 recipient_list: list = []
+app = Flask(__name__)
+@app.route('/')
 
 def main():
     """
@@ -13,6 +16,8 @@ def main():
     This function serves as the starting point of execution.
     """
     menu_principal()
+    app.run(host="0.0.0.0", port=9876)
+
 
 def menu_principal() -> None:
     """
