@@ -1,6 +1,9 @@
 from enum import Enum
 
 class PackageTypes(Enum):
-    BASICO: str = 'basico'
-    ESTANDAR: str = 'estandar'
-    DIMENSIONADO: str = 'dimensionado'
+    """
+    Represents the possible types of a package.
+    """
+    BASICO = 'basico'
+    ESTANDAR = 'estandar'
+    DIMENSIONADO = 'dimensionado'
