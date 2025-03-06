@@ -1,5 +1,6 @@
 from random import randbytes
 
+
 class Location:
     def __init__(self, country: str, department: str, city: str,
                  address1: str, address2: str, zip_code: int):
