@@ -12,7 +12,7 @@ Classes:
     - Package: Represents a package with an ID, weight, dimensions, and type.
 """
 from random import randbytes
-from package_types import PackageTypes
+from Gestion_Paquete.package_types import PackageTypes
 
 class Package:
     def __init__(self, weight: float, length: float, width: float, height: float):
