@@ -248,7 +248,7 @@ def new_order():
             else:
                 print("Invalid package ID. No package deleted.")
         elif option > 3 and package_list is not None:
-            order_list.append(Order(in_user, recipient_list[0], package_list))
+            order_list.append(Order(in_user[0], recipient_list[0], package_list))
             if option == 4:
                 receipt()
                 return
@@ -264,8 +264,38 @@ def new_order():
 
 def receipt():
     """
+    Generates and prints a detailed receipt for the first order in the `order_list`.
+
+    This function calculates the total price for all packages in the first order, then 
+    prints relevant details, including:
+    - Order ID
+    - Receiver's name, user ID, and address
+    - A list of packages included in the order
+    - Sender's name, user ID, and address
+    - The total price of all packages in the order
+    
+    Assumes that:
+    - `order_list` contains at least one order.
+    - `recipient_list` and `in_user` contain at least one recipient and one sender respectively.
+    - Each package in `order_list[0].packages` has a `calculate_price()` method.
+    - `recipient_list[0]` and `in_user[0]` have attributes such as `name`, `user_id`, and `address`.
     """
-    pass
+    package_info = ', '.join(str(pkg) for pkg in order_list[0].packages)
+    total = 0
+    for pkg in order_list[0].packages:
+        total = total + pkg.calculate_price()
+
+    print()
+    print("\t*****  RECEIPT  *****")
+    print(f"\nOrder ID: {order_list[0].order_id}")
+    print(f"\n\nRECEIVER: {recipient_list[0].name} ({recipient_list[0].user_id})")
+    print(f"RECEIVER ADDRESS: {recipient_list[0].address.city + ',' + recipient_list[0].address.address1}")
+    print(f"\n\n\tPACKEGES")
+    print(package_info)
+    print(f"\n\nSENDER: {in_user[0].name} ({in_user[0].user_id})")
+    print(f"RECEIVER ADDRESS: {in_user[0].address.city + ',' + in_user[0].address.address1}")
+    print("\n-----------------------------------")
+    print(f"Total: {total} USD")
 
 
 if __name__ == '__main__':
