@@ -198,7 +198,7 @@ class Package:
             ValueError: If the value is less than or equal to zero.
         """
         if value <= 0:
-            raise ValueError(f"{name} must be greater than zero."
+            raise ValueError(f"{name} must be greater than zero.")
     
     def __str__(self):
         return f"Package(ID: {self.package_id}\nWeight: {self.weight} kg\nDimensions: {self.dimensions}\nType: {self.package_type}\nPrice: ${self.calculate_price():.2f})"
