@@ -16,7 +16,7 @@ Classes:
 """
 from random import randbytes
 from typing import List
-from Gestion_paquete.user import User
+from Gestion_paquete.users import User
 from Gestion_paquete.package import Package
 
 
