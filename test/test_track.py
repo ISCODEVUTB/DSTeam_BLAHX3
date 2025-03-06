@@ -1,5 +1,5 @@
 import unittest
-from paqueges.Gestion_Paquete.track import Track
+from Gestion_Paquete.track import Track
 
 
 class TestPackage(unittest.TestCase):
