@@ -16,6 +16,7 @@ def main():
 
     This function serves as the starting point of execution.
     """
+    app.run(host="0.0.0.0", port=9876)
     main_menu()
 
 def main_menu() -> None:
