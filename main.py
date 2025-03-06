@@ -92,7 +92,7 @@ def new_user(user_type: str) -> User:
     email = input("Email: ")
     location = new_location(name)
 
-    return User(name, last_name, national_id, email, location)
+    return User(name, last_name, national_id, email, location, "BLAHX3")
 
 def new_location(user_name: str) -> Location:
     """
