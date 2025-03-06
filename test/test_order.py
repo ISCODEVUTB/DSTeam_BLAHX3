@@ -14,7 +14,7 @@ class TestOrder(unittest.TestCase):
         receiver_location = Location("Colombia", "Atlantico", "Barranquilla", "CRA prueba", "address prueba", 80007)
 
         self.sender = User("Alex", "Prens", "1944682", "a@gmail.com", sender_location, "Gatito123*")
-        self.sender = User("John", "Doe", "9102478", "john_doe@gmail.com", receiver_location, "Test*321")
+        self.receiver = User("John", "Doe", "9102478", "john_doe@gmail.com", receiver_location, "Test*321")
 
         # Setup mock Packages
         self.package1 = Package(15, 1.0, 2.0, 3.0)
