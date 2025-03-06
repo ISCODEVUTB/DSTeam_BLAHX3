@@ -1,6 +1,6 @@
 import unittest
-from paqueges.Gestion_Paquete.track import Track
-from paqueges.Gestion_Paquete.delivery import Delivery
+from Gestion_Paquete.track import Track
+from Gestion_Paquete.delivery import Delivery
 
 
 class TestDelivery(unittest.TestCase):
