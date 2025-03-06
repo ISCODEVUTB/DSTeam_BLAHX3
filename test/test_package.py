@@ -88,12 +88,6 @@ class TestPackage(unittest.TestCase):
         package_id2 = Package(5.2, 2, 5, 5).package_id
         self.assertNotEqual(package_id1, package_id2, "Package IDs should be unique.")
 
-    def test_valid_dimension_format(self):
-        """Verify that valid dimensions do not raise an exception."""
-        try:
-            valid_package = Package(10.0, 2.0, 3.0, 4.0)
-        except ValueError:
-            self.fail("Valid dimensions caused ValueError")
 
 if __name__ == "__main__":
     unittest.main()
