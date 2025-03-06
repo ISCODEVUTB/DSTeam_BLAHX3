@@ -16,8 +16,8 @@ Classes:
 """
 import uuid
 from typing import List
-from Gestion_paquete.users import User
-from Gestion_paquete.package import Package
+from Gestion_Paquete.users import User
+from Gestion_Paquete.package import Package
 
 
 class Order:
