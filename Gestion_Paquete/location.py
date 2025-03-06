@@ -176,7 +176,10 @@ class Location:
         self.__zip_code = value
     
     def __str__(self):
-        return f"ID: {self.location_id}\nCountry: {self.country}\nDepartment: {self.department}\nCity: {self.city}\nAddress-1: {self.address1}\nAddress-2: {self.address2}\nZip-Code: {self.zip_code}"
+        return f"ID: {self.location_id}\nCountry: {self.country}
+                      \nDepartment: {self.department}\nCity: {self.city}
+                      \nAddress-1: {self.address1}\nAddress-2: {self.address2}
+                      \nZip-Code: {self.zip_code}"
     
 
 def main():
