@@ -1,5 +1,5 @@
 # DSTeam_BLAHX3
-##Sistema Gestión de Paquetes
+# Sistema Gestión de Paquetes
 En la era digital actual, la eficiencia y la transparencia en la entrega de paquetes se han convertido en factores clave para la satisfacción del cliente y la competitividad empresarial. Las empresas de logística y mensajería enfrentan el desafío de gestionar un volumen creciente de envíos, al tiempo que diversifican sus servicios para satisfacer demandas de rapidez, costos y seguimiento preciso. Ante esta necesidad, surge el desarrollo de una aplicación web avanzada que permitirá a una empresa nacional de logística gestionar integralmente los envíos de paquetes, ofreciendo soluciones escalables a nivel local, nacional e internacional.
 
 El proyecto abarcará la creación de una aplicación web que permitirá registrar, actualizar, eliminar y clasificar paquetes; gestionar envíos y su trazabilidad; registrar y autenticar usuarios; administrar facturación y pagos; y ofrecer herramientas avanzadas de búsqueda y filtrado de envíos y paquetes. La aplicación estará diseñada con una arquitectura orientada a objetos e incluirá una interfaz de usuario accesible y eficiente para la interacción tanto de clientes como de administradores.
