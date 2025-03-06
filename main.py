@@ -1,7 +1,7 @@
 # import random
-from user import user
-from location import Location
-from package import Package
+from Gestion_Paquete.users import User
+from Gestion_Paquete.location import Location
+from Gestion_Paquete.package import Package
 
 in_user: User = [None]
 recipient_list: list = []
