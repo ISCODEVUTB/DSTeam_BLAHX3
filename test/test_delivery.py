@@ -5,7 +5,7 @@ from Gestion_Paquete.delivery import Delivery
 
 class TestDelivery(unittest.TestCase):
     def setUp(self):
-        """This is executed before each test. Initializes data for Track which will be used for the tests later"""
+        """This is executed before each test. Initializes data for Delivery which will be used for the tests later"""
         self.delivery = Delivery(
             order=140789,
             status="Despachado",
