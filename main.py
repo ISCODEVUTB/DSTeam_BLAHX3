@@ -1,13 +1,17 @@
 # import random
 from flask import Flask
+from flask_seasurf import SeaSurf
 from users import User
 from location import Location
 from package import Package
 
-in_user: User = [None]
-recipient_list: list = []
+
 app = Flask(__name__)
 @app.route("/")
+csrf = SeaSurf(app)  # Enable CSRF protection
+
+in_user: User = [None]
+recipient_list: list = []
 
 def main():
     """
