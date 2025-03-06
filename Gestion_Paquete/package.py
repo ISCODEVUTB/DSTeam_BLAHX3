@@ -4,6 +4,7 @@ class Package:
         self.__weight = weight
         self.__dimensions = dimensions
         self.__package_type = package_type
+        self.validate_dimensions(dimensions)
 
     @property
     def package_id(self) -> int:
@@ -27,6 +28,7 @@ class Package:
 
     @dimensions.setter
     def dimensions(self, value: str):
+        self.validate_dimensions(value)  # Validar dimensiones antes de establecer
         self.__dimensions = value
 
     @property
@@ -37,6 +39,13 @@ class Package:
     def package_type(self, value: str):
         self.__package_type = value
 
+    def validate_dimensions(self, dimensions: str):
+        # Simple validation for dimensions format (e.g., "LxWxH")
+        if len(dimensions.split('x')) != 3:
+            raise ValueError("There must be three dimensions apart by x")
+        if not all(x.isdigit() for x in dimensions.split('x')):
+            raise ValueError("Dimensions must be in the format 'LxWxH' with numeric values.")
+
     def calculate_price(self) -> float:
         base_price = 10
         weight_factor = 2 * self.__weight
@@ -44,11 +53,13 @@ class Package:
         return base_price + weight_factor + size_factor
 
     def __str__(self):
-        return f"Package(ID: {self.package_id}, Weight: {self.weight} kg, Dimensions: {self.dimensions}, Type: {self.package_type}, Price: ${self.calculate_price():.2f})"
+        return (f"Package(ID: {self.package_id}, Weight: {self.weight} kg, "
+                f"Dimensions: {self.dimensions}, Type: {self.package_type}, "
+                f"Price: ${self.calculate_price():.2f})")
 
 def main():
-    try_package = Package(10487, 25, "25*24", "basico")
-    print(try_package)
+    package_example = Package(10487, 25, "25x24x20", "basico")
+    print(package_example)
 
 if __name__ == '__main__':
     main()
