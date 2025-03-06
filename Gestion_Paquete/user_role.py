@@ -1,7 +1,11 @@
 from enum import Enum
 
+
 class UserRole(Enum):
-    CLIENT: str = 'client'
-    ADMIN: str = 'admin'
-    WORKER: str = 'worker'
-    DISTRIBUTOR: str = 'distributor'
+    """
+    Represents the possible roles of an user.
+    """
+    CLIENT = 'client'
+    ADMIN = 'admin'
+    WORKER = 'worker'
+    DISTRIBUTOR = 'distributor'

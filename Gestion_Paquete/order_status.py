@@ -1,5 +1,11 @@
 from enum import Enum
 
+
 class OrderStatus(Enum):
-    PENDING: str = 'pending'
-    PAYMENT_DUE_DATE: str = 'payment due date'
+    """
+    Represents the possible statuses of an order.
+    """
+    PENDING = "Pending"
+    SHIPPED = "Shipped"
+    DELIVERED = "Delivered"
+    CANCELED = "Canceled"
