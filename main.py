@@ -1,17 +1,13 @@
 from typing import List
 from flask import Flask
-from flask_seasurf import SeaSurf
-from flask_wtf import CSRFProtect
 from Gestion_Paquete.users import User
 from Gestion_Paquete.location import Location
 from Gestion_Paquete.package import Package
+from Gestion_Paquete.order import Order
 
 
 app = Flask(__name__)
-csrf = CSRFProtect()
-csrf.init_app(app) 
 @app.route("/")
-csrf = SeaSurf(app)  # Enable CSRF protection
 
 in_user: User = [None]
 recipient_list: List[User] = []
