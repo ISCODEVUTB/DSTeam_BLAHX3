@@ -2,7 +2,7 @@ import unittest
 from Gestion_Paquete.track import Track
 
 
-class TestPackage(unittest.TestCase):
+class TestTrack(unittest.TestCase):
     def setUp(self):
         """This is executed before each test. Initializes data for Track which will be used for the tests later"""
         self.track = Track(
