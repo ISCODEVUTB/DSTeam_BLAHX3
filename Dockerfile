@@ -6,8 +6,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY . /usr/src/app
 
 EXPOSE 9876
+
+ENTRYPOINT python main.py
 
 CMD ["python", "main.py"]
