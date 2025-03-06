@@ -17,8 +17,8 @@ Classes:
 """
 import uuid
 from bcrypt import hashpw, gensalt
-from Gestion_Paquete.location import Location
-from Gestion_Paquete.user_role import UserRole
+from src.location import Location
+from src.user_role import UserRole
 
 
 class User:
