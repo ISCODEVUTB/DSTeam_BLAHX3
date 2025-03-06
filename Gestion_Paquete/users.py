@@ -20,6 +20,7 @@ from bcrypt import hashpw, gensalt
 from Gestion_Paquete.location import Location
 from Gestion_Paquete.user_role import UserRole
 
+
 class User:
     def __init__(self, name: str, last_name: str, national_id: str, 
                  email: str, address: Location, password: str = "blahx3", role: UserRole = UserRole.CLIENT):
@@ -209,6 +210,7 @@ class User:
 
     def __str__(self):
         return f"ID: {self.user_id}\nRole: {self.role}\nName: {self.name}\nLast-name: {self.last_name}\nNational-id:{self.national_id}\nEmail: {self.email}\nAddress: ({self.address})"
+
 
 def main():
     """
