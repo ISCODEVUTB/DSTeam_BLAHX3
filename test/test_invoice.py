@@ -5,8 +5,7 @@ from Gestion_Paquete.invoice import Invoice
 
 class TestInvoice(unittest.TestCase):
     def setUp(self):
-        """Se ejecuta antes de cada prueba.
-        Inicializar datos para Invoice con los cuales se van a hacer las pruebas posteriormente"""
+        """This is executed before each test. Initializes data for Invoice which will be used for the tests later"""
         self.invoice = Invoice(
             invoice_id=987456,
             amount=100,
@@ -15,26 +14,26 @@ class TestInvoice(unittest.TestCase):
         )
 
     def test_invoice_init(self):
-        """Verificar que los valores iniciales sean iguales a los asignados para la prueba"""
+        """Verify that the initial values are equal to the ones assigned for the test """
         self.assertEqual(
             self.invoice.invoice_id,
             987456,
-            "El ID de la factura no se inicializó correctamente."
+            "The invoice ID was not initialized correctly."
         )
         self.assertEqual(
             self.invoice.amount,
             100,
-            "El monto de la factura no se inicializó correctamente."
+            "The invoice amount was not initialized correctly."
         )
         self.assertEqual(
             self.invoice.invoice_date,
             date(2024, 2, 18),
-            "La fecha de creación de la factura no se inicializó correctamente."
+            "The invoice date was not initialized correctly."
         )
         self.assertEqual(
             self.invoice.status,
             "Entregado",
-            "El estado de la factura no se inicializó correctamente."
+            "The invoice status was not initialized correctly."
         )
 
 
