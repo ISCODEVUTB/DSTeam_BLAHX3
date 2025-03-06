@@ -2,14 +2,16 @@ import unittest
 from datetime import date
 from Gestion_Paquete.invoice import Invoice
 
+
 class TestInvoice(unittest.TestCase):
     def setUp(self):
-        """Se ejecuta antes de cada prueba. Inicializar datos para Invoice con los cuales se van a hacer las pruebas posteriormente"""
+        """Se ejecuta antes de cada prueba.
+        Inicializar datos para Invoice con los cuales se van a hacer las pruebas posteriormente"""
         self.invoice = Invoice(
-            invoice_id = 987456,
-            amount = 100,
-            invoice_date = date(2024, 2, 18),
-            status = "Entregado"
+            invoice_id=987456,
+            amount=100,
+            invoice_date=date(2024, 2, 18),
+            status="Entregado"
         )
 
     def test_invoice_init(self):
@@ -34,6 +36,7 @@ class TestInvoice(unittest.TestCase):
             "Entregado",
             "El estado de la factura no se inicializó correctamente."
         )
+
 
 if __name__ == "__main__":
     unittest.main()
