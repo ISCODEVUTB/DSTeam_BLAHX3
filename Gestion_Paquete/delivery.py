@@ -22,7 +22,7 @@ class Delivery:
         return self.__track
 
     @property
-    def driver(self) -> int:
+    def driver_id(self) -> int:
         return self.__driver_id
 
     @property
