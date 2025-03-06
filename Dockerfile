@@ -18,7 +18,7 @@ COPY . /app
 USER appuser
 
 # Expone el puerto que usa la aplicación
-EXPOSE 9876
+EXPOSE 7000
 
 # Comando para iniciar la aplicación
 CMD ["python", "main.py"]
