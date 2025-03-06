@@ -55,9 +55,24 @@ class TestPackage(unittest.TestCase):
     
     def test_invalid_height_str(self):
         """Verify that a ValueError exception is raised if the dimensions are empty."""
-        with self.assertRaises(ValueError, msg="The height must be a postive number."):
-            self.package.height = "pruebo"
+        with self.assertRaises(TypeError, msg="The height must be a postive number."):
+            self.package.height = "prueba"
     
+    def test_invalid_weight_str(self):
+            """Verify that a ValueError exception is raised if the dimensions are empty."""
+            with self.assertRaises(TypeError, msg="The weight must be a postive number."):
+                self.package.weight = "prueba"
+
+    def test_invalid_lenght_str(self):
+            """Verify that a ValueError exception is raised if the dimensions are empty."""
+            with self.assertRaises(TypeError, msg="The length must be a postive number."):
+                self.package.length = "prueba"
+
+    def test_invalid_width_str(self):
+            """Verify that a ValueError exception is raised if the dimensions are empty."""
+            with self.assertRaises(TypeError, msg="The width must be a postive number."):
+                self.package.width = "prueba"
+
     def test_invalid_dimensions_empty(self):
         """Verify that a ValueError exception is raised if the dimensions are empty."""
         with self.assertRaises(ValueError, msg="The package must have a dimensions."):
