@@ -1,57 +1,43 @@
-"""
-Module containing user's location-related functionality.
-
-This module defines the Location class, which represents an address with 
-specific attributes such as country, department, city, address1, address2,
-and zip code. 
-
-Imports:
-    randbytes (random): Generates random bytes for unique identifiers.
-
-Classes:
-    - Location: Represents an address with an ID, country, department, 
-    city, address1, address2, and zip code.
-"""
 from random import randbytes
 
 class Location:
     def __init__(self, country: str, department: str, city: str,
                  address1: str, address2: str, zip_code: int):
         """
-        Initializes a new Location instance.
+        Initializes a new instance of the Location class.
 
         Args:
             country (str): The country of the location.
             department (str): The department or state of the location.
             city (str): The city of the location.
-            address1 (str): The primary address line.
+            address1 (str): The main address line.
             address2 (str): The secondary address line.
-            zip_code (int): The postal or ZIP code of the location.
+            zip_code (int): The postal code of the location.
 
         Attributes:
             __id (str): A unique identifier for the location.
             __country (str): The country of the location.
             __department (str): The department or state of the location.
             __city (str): The city of the location.
-            __address1 (str): The primary address line.
+            __address1 (str): The main address line.
             __address2 (str): The secondary address line.
-            __zip_code (int): The postal or ZIP code of the location.
+            __zip_code (int): The postal code of the location.
         """
-        self.__id = randbytes(5).hex() # Generate a unique location ID
+        self.__id = randbytes(5).hex()  # Generate a unique ID for the location
         self.__country = country
         self.__department = department
         self.__city = city
         self.__address1 = address1
         self.__address2 = address2
-        self.__zip_code = zip_code
-    
+        self.zip_code = zip_code  # Uses the setter to validate the zip_code
+
     @property
     def location_id(self) -> str:
         """
-        Gets the lcoation's unique identifier.
+        Gets the location's ID.
 
         Returns:
-            str: The location's ID as a string.
+            str: The unique ID of the location.
         """
         return self.__id
 
@@ -61,7 +47,7 @@ class Location:
         Gets the country of the location.
 
         Returns:
-            str: The country name.
+            str: The name of the country.
         """
         return self.__country
     
@@ -78,17 +64,17 @@ class Location:
     @property
     def department(self) -> str:
         """
-        Gets the department of the location.
+        Gets the department or state of the location.
 
         Returns:
-            str: The department name.
+            str: The name of the department.
         """
         return self.__department
     
     @department.setter
     def department(self, value: str):
         """
-        Sets the department of the location.
+        Sets the department or state of the location.
 
         Args:
             value (str): The new department name.
@@ -98,10 +84,10 @@ class Location:
     @property
     def city(self) -> str:
         """
-        Returns the city of the location.
+        Gets the city of the location.
 
         Returns:
-            str: The city name.
+            str: The name of the city.
         """
         return self.__city
     
@@ -118,69 +104,80 @@ class Location:
     @property
     def address1(self) -> str:
         """
-        Gets the first address of the location.
+        Gets the first address line of the location.
 
         Returns:
-            str: The first address a string.
+            str: The first address line.
         """
         return self.__address1
     
     @address1.setter
     def address1(self, value: str):
         """
-        Sets the first address of the location.
+        Sets the first address line of the location.
 
         Args:
-            value (str): The new fist address name.
+            value (str): The new value for the first address line.
         """
         self.__address1 = value
     
     @property
     def address2(self) -> str:
         """
-        Gets the second address of the location.
+        Gets the second address line of the location.
 
         Returns:
-            str: The second address as a string.
+            str: The second address line.
         """
         return self.__address2
     
     @address2.setter
     def address2(self, value: str):
         """
-        Sets the second address of the location.
+        Sets the second address line of the location.
 
         Args:
-            value (str): The new second address name.
+            value (str): The new value for the second address line.
         """
         self.__address2 = value
     
     @property
     def zip_code(self) -> int:
         """
-        Gets the zip code of the location.
+        Gets the postal code of the location.
 
         Returns:
-            int: The zip code number.
+            int: The postal code.
         """
         return self.__zip_code
     
     @zip_code.setter
     def zip_code(self, value: int):
         """
-        Sets the zip code of the location.
+        Sets the postal code of the location. Validates that it is a positive integer.
 
         Args:
-            value (int): The new zip code number.
+            value (int): The new postal code.
+
+        Raises:
+            TypeError: If the postal code is not an integer.
+            ValueError: If the postal code is not positive.
         """
+        if not isinstance(value, int):
+            raise TypeError("The postal code must be an integer.")
+        if value <= 0:
+            raise ValueError("The postal code must be a positive value.")
         self.__zip_code = value
     
     def __str__(self):
-        return f"ID: {self.location_id}\nCountry: {self.country}
-                      \nDepartment: {self.department}\nCity: {self.city}
-                      \nAddress-1: {self.address1}\nAddress-2: {self.address2}
-                      \nZip-Code: {self.zip_code}"
-    
+        """
+        String representation of the location.
+
+        Returns:
+            str: A string containing all the details of the location.
+        """
+        return f"ID: {self.location_id}\nCountry: {self.country}\nDepartment: {self.department}\nCity: {self.city}\nAddress-1: {self.address1}\nAddress-2: {self.address2}\nZip-Code: {self.zip_code}"
+
 
 def main():
     """
@@ -188,8 +185,16 @@ def main():
 
     This function tests the Location class.
     """
-    alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", 130001)
-    print (alex_location)
+    try:
+        # Testing the Location class
+        alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", 130001)
+        print(alex_location)
+
+        # Testing postal code validation with an invalid code
+        invalid_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", -130001)  # This should raise a ValueError
+    except Exception as e:
+        print(f"Error: {e}")
+
 
 if __name__ == '__main__':
     main()
