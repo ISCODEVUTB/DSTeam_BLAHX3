@@ -9,146 +9,216 @@ recipient_list: list = []
 app = Flask(__name__)
 @app.route('/')
 
+
 def main():
     """
     Main entry point of the program.
 
     This function serves as the starting point of execution.
     """
-    menu_principal()
-    app.run(host="0.0.0.0", port=9876)
+    main_menu()
 
-
-def menu_principal() -> None:
+def main_menu() -> None:
     """
+    Displays the main menu and handles user input.
+
+    The user can choose to create a new order or exit the program.
+    If an invalid option is entered, the user is prompted again.
     """
+    while True:
+        menu = (
+            "\tMenu\n"
+            "\t1.\tCreate Order\n"
+            "\t2.\tExit\n"
+        )
+        print(menu)
 
-    print("""
-\tMenu
-\t1.\tCrear orden
-\t2.\tSalir
-""")
-
-    option=0
-    try:
-        while option < 1 or option > 3:
-            option = int(input("Type a number: "))
-    except ValueError:
-        print("Invalid value")
-        menu_principal()
-
-    if option == 1:
-        new_order()
-    elif option == 2:
-        return
-
-def menu_orden() -> int:
-    """
-    """
-    print("""
-\tMenu
-\t1.\tNew package
-\t2.\tShow packages
-\t3.\tDelete package
-\t4.\tGenerate receipt
-\t5.\tExit
-""")
-
-    option=0
-    while option < 1 or option > 5:
         try:
             option = int(input("Type a number: "))
+            if option == 1:
+                new_order()
+                break  # Exit loop after handling the option
+            elif option == 2:
+                break  # Exit function
+            else:
+                print("Invalid option. Please enter 1 or 2.")
         except ValueError:
-            print("Invalid value")
+            print("Invalid input. Please enter a number.")
 
-    return option
+def order_menu() -> int:
+    """
+    Displays the order menu and handles user input.
+
+    The user can choose to create, view, delete packages, generate a receipt,
+    or exit the order menu. If an invalid option is entered, the user is prompted again.
+
+    Returns:
+        int: The selected menu option (1-5).
+    """
+    while True:
+        menu = (
+            "\tMenu\n"
+            "\t1.\tNew package\n"
+            "\t2.\tShow packages\n"
+            "\t3.\tDelete package\n"
+            "\t4.\tGenerate receipt\n"
+            "\t5.\tExit"
+        )
+        print(menu)
+
+        try:
+            option = int(input("Type a number: "))
+            if option >= 1 or option <= 5:
+                return option
+            print("Invalid option. Please enter a number between 1 and 5.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
 
 def new_user(user_type: str) -> User:
     """
+    Creates a new user by prompting for user details.
+
+    Args:
+        user_type (str): The type of user being created.
+
+    Returns:
+        User: A new User instance with the provided details.
     """
     print(f"Creating {user_type} user")
-    name: str = input("Name: ")
-    last_name: str = input("Last name: ")
-    national_id: str = input("National Identification: ")
-    email: str = input("Email: ")
-    location: Location = new_location(name)
+
+    name = input("Name: ")
+    last_name = input("Last name: ")
+    national_id = input("National Identification: ")
+    email = input("Email: ")
+    location = new_location(name)
 
     return User(name, last_name, national_id, email, location)
 
-def new_location(user_name: str):
+def new_location(user_name: str) -> Location:
     """
+    Creates a new location by prompting the user for details.
+
+    Args:
+        user_name (str): The name of the user associated with the location.
+
+    Returns:
+        Location: A Location instance with the provided details.
     """
-    print(f"Direccion ({user_name})")
+    print(f"Address for {user_name}")
+
     country = input("Country: ")
-    department = input("Departament: ")
+    department = input("Department: ")
     city = input("City: ")
     address1 = input("Address 1: ")
     address2 = input("Address 2: ")
-    
+
     zip_code = None
     while zip_code is None:
         try:
             zip_code = int(input("Zip Code: "))
+            if zip_code <= 0:
+                print("Invalid value. Zip Code must be a positive number.")
+                zip_code = None
         except ValueError:
-            print("Invalid value")
-            zip_code = None
+            print("Invalid input. Please enter a numeric zip code.")
+
+    return Location(country, department, city, address1, address2, zip_code)
 
 def new_package() -> Package:
     """
+    Creates a new package by prompting the user for weight and dimensions.
+
+    Returns:
+        Package: A Package instance with the provided weight and dimensions.
     """
-    print("New packege")
+    print("New package")
 
-    weight = None
-    while weight is None:
-        try:
-            weight = int(input("Weight (Kg): "))
-        except ValueError:
-            print("Invalid value")
-            weight = None
-    
-    length = input("Length (m): ")
-    width = input("Width (m): ")
-    height = input("Height (m): ")
+    # Function to validate numeric positive input
+    def get_positive_value(prompt: str) -> float:
+        """
+        Prompts the user for a positive float value.
 
-    dimensions = length + 'x' + width + 'x' + height
+        Args:
+            prompt (str): The input message displayed to the user.
 
-    return Package(weight, dimensions)
+        Returns:
+            float: A positive numeric value entered by the user.
+        """
+        while True:
+            try:
+                value = float(input(prompt))
+                if value <= 0:
+                    raise ValueError("Value must be a positive number.")
+                return value
+            except ValueError as e:
+                print(f"Invalid input: {e}")
+
+    # Get and validate inputs
+    weight = get_positive_value("Weight (Kg): ")
+    length = get_positive_value("Length (m): ")
+    width = get_positive_value("Width (m): ")
+    height = get_positive_value("Height (m): ")
+
+    return Package(weight, length, width, height)
 
 def show_packages(package_list: list, receiver: User = None) -> None:
     """
+    Displays the list of packages. If a receiver is provided, 
+    it shows the recipient's information.
+
+    Args:
+        package_list (list): A list of Package objects to display.
+        receiver (User, optional): The recipient of the packages. Defaults to None.
     """
     if receiver is not None:
-        print(f"Packeges due to sent to: {receiver.name} ({receiver.user_id})")
-    for i in range(len(package_list)):
-        print(f"Package {i+1}")
-        for item in str(package_list[i]).split(','):
-            print(item)
+        print(f"Packages due to be sent to: {receiver.name} ({receiver.user_id})")
+
+    for index, package in enumerate(package_list, start=1):
+        print(f"Package {index}")
+        print(package)
         print()
 
 def delete_package(package_list: list) -> int:
     """
-    """
-    def extract_id(package: Package):
-        return package.package_id
-    package_list_id = list(map(extract_id, package_list))
+    Removes a package from the package list based on user input.
 
+    Args:
+        package_list (list): A list of Package objects.
+
+    Returns:
+        int: 1 if the package was successfully deleted, 0 if the package was not found.
+    """
+    if not package_list:
+        print("No packages available to delete.")
+        return 0
+
+    # Display available packages
     show_packages(package_list)
 
-    package_deleted = input("Select package: ")
+    # Extract package IDs
+    package_list_id = [package.package_id for package in package_list]
+
+    package_deleted = input("Select package ID to delete: ")
 
     try:
         index = package_list_id.index(package_deleted)
         package_list.pop(index)
+        print("Package deleted successfully.")
         return 1
-
     except ValueError:
-        index = None
+        print("Invalid package ID. No package deleted.")
         return 0
 
 def new_order():
     """
+    Handles the process of creating a new order.
+
+    - Ensures a sender is registered.
+    - Creates a new receiver.
+    - Manages package operations (adding, showing, deleting).
+    - Generates a receipt or exits the order process.
     """
-    if in_user[0] == None:
+    if in_user[0] is None:
         in_user[0] = new_user("sender")
 
     print()
@@ -157,25 +227,24 @@ def new_order():
 
     package_list: list = []
 
-    option = 0
     while True:
-        option: int = menu_orden()
+        option: int = order_menu()
 
         if option == 1:
             package: Package = new_package()
-            print(f"Paquete creado ({package.package_id})")
+            print(f"Package created ({package.package_id})")
             package_list.append(package)
         elif option == 2:
             show_packages(package_list, receiver)
         elif option == 3:
             if delete_package(package_list) == 1:
-                print("Package deleted succesfully")
+                print("Package deleted successfully")
             else:
                 print("Package not deleted")
         elif option == 4:
             receipt()
         elif option == 5:
-            break
+            return
 
 def receipt():
     """
@@ -185,3 +254,4 @@ def receipt():
 
 if __name__ == '__main__':
     main()
+
