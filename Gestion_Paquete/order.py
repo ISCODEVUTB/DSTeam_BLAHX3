@@ -22,7 +22,7 @@ from Gestion_Paquete.order_status import OrderStatus
 
 
 class Order:
-    def __init__(self, order_id: str, sender: User, receiver: User, 
+    def __init__(self, sender: User, receiver: User, 
                  packages: List[Package], status: OrderStatus = OrderStatus.PENDING):
         """Initializes an Order with sender, receiver, packages, and status.
 
