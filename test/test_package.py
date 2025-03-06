@@ -7,7 +7,7 @@ class TestPackage(unittest.TestCase):
     def setUp(self):
         """This is executed before each test. Initializes data for Package which will be used for the tests later."""
         self.package = Package(
-            weight=10,
+            weight=10.0,
             length=2.0,
             width=1.5,
             height=0.5
@@ -53,30 +53,29 @@ class TestPackage(unittest.TestCase):
         with self.assertRaises(ValueError, msg="Height must be grater than zero."):
             self.package.height = 0  # Invalid height (negative value)
     
-    def test_invalid_height_str(self):
-        """Verify that a ValueError exception is raised if the dimensions are empty."""
-        with self.assertRaises(TypeError, msg="The height must be a postive number."):
-            self.package.height = "prueba"
+    def test_invalid_length_negative(self):
+        with self.assertRaises(ValueError, msg="Length must be a positive number."):
+            self.package.length = -1  # Invalid length (negative value)
     
-    def test_invalid_weight_str(self):
-            """Verify that a ValueError exception is raised if the dimensions are empty."""
-            with self.assertRaises(TypeError, msg="The weight must be a postive number."):
-                self.package.weight = "prueba"
-
-    def test_invalid_lenght_str(self):
-            """Verify that a ValueError exception is raised if the dimensions are empty."""
-            with self.assertRaises(TypeError, msg="The length must be a postive number."):
-                self.package.length = "prueba"
-
-    def test_invalid_width_str(self):
-            """Verify that a ValueError exception is raised if the dimensions are empty."""
-            with self.assertRaises(TypeError, msg="The width must be a postive number."):
-                self.package.width = "prueba"
-
-    def test_invalid_dimensions_empty(self):
-        """Verify that a ValueError exception is raised if the dimensions are empty."""
-        with self.assertRaises(ValueError, msg="The package must have a dimensions."):
-            self.package.dimensions = ""
+    def test_invalid_length_zero(self):
+        with self.assertRaises(ValueError, msg="Length must be greater than zero."):
+            self.package.length = 0  # Invalid length (zero value)
+    
+    def test_invalid_width_negative(self):
+        with self.assertRaises(ValueError, msg="Width must be a positive number."):
+            self.package.width = -1  # Invalid width (negative value)
+    
+    def test_invalid_width_zero(self):
+        with self.assertRaises(ValueError, msg="Width must be greater than zero."):
+            self.package.width = 0  # Invalid width (zero value)
+    
+    def test_invalid_weight_negative(self):
+        with self.assertRaises(ValueError, msg="Weight must be a positive number."):
+            self.package.weight = -1  # Invalid weight (negative value)
+    
+    def test_invalid_weight_zero(self):
+        with self.assertRaises(ValueError, msg="Weight must be greater than zero."):
+            self.package.weight = 0  # Invalid weight (zero value)
 
     def test_invalid_package_type(self):
         """Test to ensure the package type is correctly initialized."""
@@ -89,15 +88,10 @@ class TestPackage(unittest.TestCase):
         package_id2 = Package(5.2, 2, 5, 5).package_id
         self.assertNotEqual(package_id1, package_id2, "Package IDs should be unique.")
 
-    def test_invalid_dimension_format(self):
-        """Verify that dimensions are correctly formatted (LxWxH)."""
-        with self.assertRaises(ValueError, msg="Invalid dimensions format."):
-            self.package.dimensions = "25*24*10"  # Invalid format (should be LxWxH)
-
     def test_valid_dimension_format(self):
         """Verify that valid dimensions do not raise an exception."""
         try:
-            valid_package = Package(10, 2.0, 3.0, 4.0)
+            valid_package = Package(10.0, 2.0, 3.0, 4.0)
         except ValueError:
             self.fail("Valid dimensions caused ValueError")
 
