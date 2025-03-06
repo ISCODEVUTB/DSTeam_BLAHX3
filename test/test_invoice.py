@@ -10,7 +10,7 @@ class TestInvoice(unittest.TestCase):
             invoice_id=987456,
             amount=100,
             invoice_date=date(2024, 2, 18),
-            status="Entregado"
+            status="Pago"
         )
 
     def test_invoice_init(self):
@@ -32,7 +32,7 @@ class TestInvoice(unittest.TestCase):
         )
         self.assertEqual(
             self.invoice.status,
-            "Entregado",
+            "Pago",
             "The invoice status was not initialized correctly."
         )
 
