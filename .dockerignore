@@ -1,0 +1,11 @@
+# Ignorar el control de versiones
+.git
+.gitignore
+
+# Ignorar archivos de configuración locales o sensibles
+.env
+config/secrets.yml
+
+# Ignorar archivos temporales y de logs
+*.log
+tmp/
