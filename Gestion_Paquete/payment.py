@@ -1,4 +1,5 @@
 from enum import Enum
+from datetime import date
 
 
 class PaymentMethod(Enum):
@@ -8,20 +9,8 @@ class PaymentMethod(Enum):
     TRANSFER = 'Transfer'
     CASH = 'Cash'
 
-
 class Payment:
-    """Class representing a payment with its ID, amount, method, and date."""
-
-    def __init__(self, payment_id: int, amount: float, method: PaymentMethod, date: str):
-        """
-        Initializes a Payment object.
-
-        Args:
-            payment_id (int): Unique identifier of the payment.
-            amount (float): Amount of the payment.
-            method (PaymentMethod): Payment method used.
-            date (str): Payment date as a string.
-        """
+    def __init__(self, payment_id: int, amount: float, method: PaymentMethod, date: date):
         self.__payment_id = payment_id
         self.__amount = amount
         self.__method = method
@@ -29,25 +18,35 @@ class Payment:
 
     @property
     def payment_id(self) -> int:
-        """Returns the payment identifier."""
         return self.__payment_id
+
+    @payment_id.setter
+    def payment_id(self, value: int):
+        self.__payment_id = value
 
     @property
     def amount(self) -> float:
-        """Returns the payment amount."""
         return self.__amount
+
+    @amount.setter
+    def amount(self, value: float):
+        self.__amount = value
 
     @property
     def method(self) -> PaymentMethod:
-        """Returns the payment method used."""
         return self.__method
 
+    @method.setter
+    def method(self, value: PaymentMethod):
+        self.__method = value
+
     @property
-    def date(self) -> str:
-        """Returns the payment date."""
+    def date(self) -> date:
         return self.__date
 
-    def __str__(self) -> str:
-        """Returns a string representation of the Payment object."""
-        return (f"Payment(ID: {self.payment_id}, Amount: ${self.amount:.2f}, "
-                f"Method: {self.method.value}, Date: {self.date})")
+    @date.setter
+    def date(self, value: date):
+        self.__date = value
+
+    def __str__(self):
+        return f"Payment(ID: {self.payment_id}, Amount: ${self.amount:.2f}, Method: {self.method.value}, Date: {self.date.strftime('%Y-%m-%d')})"
