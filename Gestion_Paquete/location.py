@@ -1,4 +1,4 @@
-from random import randbytes
+import uuid
 
 
 class Location:
@@ -24,7 +24,7 @@ class Location:
             __address2 (str): The secondary address line.
             __zip_code (int): The postal code of the location.
         """
-        self.__id = randbytes(5).hex()  # Generate a unique ID for the location
+        self.__id = str(uuid.uuid4())  # Generate a unique ID for the location
         self.__country = country
         self.__department = department
         self.__city = city
