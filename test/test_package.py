@@ -1,14 +1,16 @@
 import unittest
 from Gestion_Paquete.package import Package
 
+
 class TestPackage(unittest.TestCase):
     def setUp(self):
-        """Se ejecuta antes de cada prueba. Inicializa datos para Package con los cuales se van a hacer las pruebas posteriormente"""
+        """ Se ejecuta antes de cada prueba. 
+            Inicializa datos para Package con los cuales se van a hacer las pruebas posteriormente"""
         self.package = Package(
-            package_id = 123456,
-            weight = 10,
-            dimensions = "30x20x10",
-            package_type = "dimensionado"
+            package_id=123456,
+            weight=10,
+            dimensions="30x20x10",
+            package_type="dimensionado"
         )
 
     def test_package_init(self):
@@ -40,27 +42,27 @@ class TestPackage(unittest.TestCase):
         message = "El cálculo del precio es incorrecto."
         # Test # 1: Paquete con peso de 10kg y dimensiones "30x20x10".
         expected_price = 10 + 2 * 10 + len("30x20x10") * 0.5
-        self.assertEqual (self.package.calculate_price(), expected_price, message)
+        self.assertEqual(self.package.calculate_price(), expected_price, message)
 
         # Test #2: Paquete con peso de 5kg y dimensiones 2*5*5
         package2 = Package(123457, 5.2, "2x5x5", "basico")
         expected_price = 10 + 2 * 5.2 + len("2x5x5") * 0.5
-        self.assertEqual (package2.calculate_price(), expected_price, message)
+        self.assertEqual(package2.calculate_price(), expected_price, message)
 
     def test_invalid_dimensions_format(self):
         """Verifica que se lance una excepción ValueError si las dimensiones no cuentan con el formato"""
-        with self.assertRaises(ValueError, msg = "El paquete debe poseer tres dimensiones"):
+        with self.assertRaises(ValueError, msg="El paquete debe poseer tres dimensiones"):
             self.package.dimensions = "30x20"
 
-        with self.assertRaises(ValueError, msg = "Las dimensiones se deben dividir por un 'x'"):
+        with self.assertRaises(ValueError, msg="Las dimensiones se deben dividir por un 'x'"):
             self.package.dimensions = "2*5*5"
 
     def test_validate_dimensions_non_numeric(self):
         """Verifica que se lance una excepción ValueError si las dimensiones contiene valores no numéricos"""
-        with self.assertRaises(ValueError, msg = "Los únicos caracteres no numéricos que poseen las dimensiones son 'x'"):
+        with self.assertRaises(ValueError, msg="Los únicos caracteres no numéricos que poseen las dimensiones son 'x'"):
             self.package.dimensions = "30x20a10"
 
-        with self.assertRaises(ValueError, msg = "Las dimensiones no contienen valores no numéricos, excepto 'x'"):
+        with self.assertRaises(ValueError, msg="Las dimensiones no contienen valores no numéricos, excepto 'x'"):
             self.package.dimensions = "30x2ax10"
 
     def test_invalid_dimensions_empty(self):
