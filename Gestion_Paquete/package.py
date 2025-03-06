@@ -31,10 +31,10 @@ class Package:
             __package_type (str): The type of package, determined dynamically.
         """
         self.__package_id = str(uuid.uuid4())  # Generate a unique package ID
-        self.__weight = weight
-        self.__length = length
-        self.__width = width
-        self.__height = height
+        self.__weight = self.validate_positive_value(weight)
+        self.__length = self.validate_positive_value(length)
+        self.__width = self.validate_positive_value(width)
+        self.__height = self.validate_positive_value(height)
         self.__package_type = self.typing_package()
 
     @property
@@ -186,6 +186,20 @@ class Package:
         # Apply pricing limits
         return max(10, min(total_price, 500))
 
+    def validate_positive_value(value, name):
+        """
+        Validates that a given value is a positive number.
+    
+        Args:
+            value (float): The value to validate.
+            name (str): The name of the parameter being validated.
+    
+        Raises:
+            ValueError: If the value is less than or equal to zero.
+        """
+        if value <= 0:
+            raise ValueError(f"{name} must be greater than zero."
+    
     def __str__(self):
         return f"Package(ID: {self.package_id}\nWeight: {self.weight} kg\nDimensions: {self.dimensions}\nType: {self.package_type}\nPrice: ${self.calculate_price():.2f})"
 
