@@ -12,8 +12,6 @@ app = Flask(__name__)
 def main():
     app.run(host="0.0.0.0", port=9876)    
     """
-    Main entry point of the program.
-
     This function serves as the starting point of execution.
     """
     menu_principal()
