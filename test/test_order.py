@@ -1,4 +1,5 @@
 import unittest
+import uuid
 from Gestion_Paquete.users import User
 from Gestion_Paquete.package import Package
 from Gestion_Paquete.order import Order
@@ -22,6 +23,7 @@ class TestOrder(unittest.TestCase):
 
         # Setup the Order with packages and users
         self.order = Order(
+            order_id=str(uuid.uuid4()),
             sender=self.sender,
             receiver=self.receiver,
             packages=[self.package1, self.package2]
