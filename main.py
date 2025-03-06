@@ -1,9 +1,9 @@
 # import random
 from flask import Flask
 from flask_seasurf import SeaSurf
-from users import User
-from location import Location
-from package import Package
+from Gestion_Paquete.users import User
+from Gestion_Paquete.location import Location
+from Gestion_Paquete.package import Package
 
 
 app = Flask(__name__)
