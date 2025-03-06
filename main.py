@@ -1,6 +1,6 @@
 # import random
 from flask import Flask
-from users import User
+from user import User
 from location import Location
 from package import Package
 
