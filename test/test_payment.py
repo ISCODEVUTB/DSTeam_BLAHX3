@@ -1,7 +1,7 @@
 import unittest
 from datetime import date
-from paqueges.Gestion_Paquete.payment import Payment
-from paqueges.Gestion_Paquete.payment import PaymentMethod
+from Gestion_Paquete.payment import Payment
+from Gestion_Paquete.payment import PaymentMethod
 
 
 class TestPayment(unittest.TestCase):
