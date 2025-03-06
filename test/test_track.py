@@ -1,11 +1,10 @@
 import unittest
-from Gestion_Paquete.track import Track
+from paqueges.Gestion_Paquete.track import Track
 
 
 class TestPackage(unittest.TestCase):
     def setUp(self):
-        """ Se ejecuta antes de cada prueba.
-            Inicializa datos para Track con los cuales se van a hacer las pruebas posteriormente"""
+        """This is executed before each test. Initializes data for Track which will be used for the tests later"""
         self.track = Track(
             track_id=456710,
             track_type="Tipo",
@@ -15,31 +14,31 @@ class TestPackage(unittest.TestCase):
         )
 
     def test_track_init(self):
-        """Verificar que los valores iniciales sean iguales a los asignados para la prueba"""
+        """Verify that the initial values are equal to the ones assigned for the test """
         self.assertEqual(
             self.track.track_id,
             456710,
-            "El ID del track no se inicializó correctamente"
+            "The ID track was not initialized correctly."
         )
         self.assertEqual(
             self.track.track_type,
             "Tipo",
-            "El tipo del track no se inicializó correctamente"
+            "The track type was not initialized correctly."
         )
         self.assertEqual(
             self.track.max_weight,
             80,
-            "El peso máximo del paquete no se inicializó correctamente"
+            "The max weight was not initialized correctly."
         )
         self.assertEqual(
             self.track.current_weight,
             15,
-            "El peso del paquete no se inicializó correctamente"
+            "The current weight was not initialized correctly."
         )
         self.assertEqual(
             self.track.status,
             "Entregado",
-            "El estado del paquete no se inicializó correctamente"
+            "The package status was not initialized correctly."
         )
 
 
