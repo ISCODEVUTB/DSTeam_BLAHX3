@@ -15,7 +15,7 @@ Classes:
     - User: Eepresents a user with an ID, name, last name, national id, 
     email, address, password, and role.
 """
-from random import randbytes
+import uuid
 from bcrypt import hashpw, gensalt
 from Gestion_Paquete.location import Location
 from Gestion_Paquete.user_role import UserRole
@@ -47,7 +47,7 @@ class User:
             _password (str): The hashed password of the user.
             _role (UserRole): The user's role in the system.
         """
-        self.__id = randbytes(5).hex() # Generate a unique user ID
+        self.__id = str(uuid.uuid4()) # Generate a unique user ID
         self._name = name
         self._last_name = last_name
         self._national_id = national_id
