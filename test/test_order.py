@@ -1,8 +1,8 @@
 import unittest
-from Gestion_Paquetes.users import User
-from Gestion_Paquetes.package import Package
-from Gestion_Paquetes.order import Order
-from Gestion_Paquetes.location import Location
+from Gestion_Paquete.users import User
+from Gestion_Paquete.package import Package
+from Gestion_Paquete.order import Order
+from Gestion_Paquete.location import Location
 
 
 class TestOrder(unittest.TestCase):
