@@ -1,12 +1,16 @@
 # import random
+from flask import Flask
 from user import User
 from location import Location
 from package import Package
 
 in_user: User = [None]
 recipient_list: list = []
+app = Flask(__name__)
+@app.route("/")
 
 def main():
+    app.run(host="0.0.0.0", port=9876)    
     """
     Main entry point of the program.
 
