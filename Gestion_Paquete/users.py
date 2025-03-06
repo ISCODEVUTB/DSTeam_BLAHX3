@@ -23,7 +23,7 @@ from Gestion_Paquete.user_role import UserRole
 
 class User:
     def __init__(self, name: str, last_name: str, national_id: str, 
-                 email: str, address: Location, password: str = "blahx3", role: UserRole = UserRole.CLIENT):
+                 email: str, address: Location, password: str, role: UserRole = UserRole.CLIENT):
         """
         Initializes a new instance of the class.
 
@@ -33,8 +33,7 @@ class User:
             national_id (str): The user's national identification number.
             email (str): The user's email address.
             address (Location): The user's location or address.
-            password (str, optional): The user's password (encrypted before storage). 
-                                    Defaults to "blahx3".
+            password (str, optional): The user's password (encrypted before storage).
             role (UserRole, optional): The user's role in the system. Defaults to UserRole.CLIENT.
 
         Attributes:
