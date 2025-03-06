@@ -65,7 +65,7 @@ class Package:
         Args:
             value (float): The new weight of the package.
         """
-        self.__weight = value
+        self.__weight = self.validate_positive_value(value)
 
     @property
     def dimensions(self) -> str:
@@ -95,7 +95,7 @@ class Package:
         Args:
             value (float): The new length in meters.
         """
-        self.__length = value
+        self.__length = self.validate_positive_value(value)
 
     @property
     def width(self) -> float:
@@ -115,7 +115,7 @@ class Package:
         Args:
             value (float): The new width in meters.
         """
-        self.__width = value
+        self.__width = self.validate_positive_value(value)
 
     @property
     def height(self) -> float:
@@ -135,9 +135,7 @@ class Package:
         Args:
             value (float): The new height in meters.
         """
-        if value <= 0:
-            raise ValueError("Height must be a positive number.")
-        self.__height = value
+        self.__height = self.validate_positive_value(value)
 
     @property
     def package_type(self) -> str:
