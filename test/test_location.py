@@ -5,8 +5,7 @@ from Gestion_Paquete.location import Location
 class TestLocation(unittest.TestCase):
 
     def setUp(self):
-        """ Se ejecuta antes de cada prueba. I
-            Inicializar datos para Location con los cuales se van a hacer las pruebas posteriormente"""
+        """This is executed before each test. Initializes data for Location which will be used for the tests later"""
         self.location = Location(
             country="Colombia",
             department="Bolivar",
@@ -17,51 +16,57 @@ class TestLocation(unittest.TestCase):
         )
 
     def test_init(self):
-        """Verificar que los valores iniciales sean iguales a los asignados para la prueba"""
+        """Verify that the initial values are equal to the ones assigned for the test """
         # assertEqual (primer valor, segundo valor, mensaje) Compara los valores y muestra un mensaje si no son iguales.
         self.assertEqual(
             self.location.country,
             "Colombia",
-            "El país no se inicializó correctamente."
+            "The country was not initialized correctly."
         )
         self.assertEqual(
             self.location.department,
             "Bolivar",
-            "El departamento no se inicializó correctamente."
+            "The department was not initialized correctly."
         )
         self.assertEqual(
             self.location.city,
             "Cartagena de Indias",
-            "La ciudad no se inicializó correctamente."
+            "The city was not initialized correctly."
         )
         self.assertEqual(
             self.location.address1,
             "Cra. 11 #39-21, San Diego",
-            "La dirección 1 no se inicializó correctamente."
+            "Address 1 was not initialized correctly."
         )
         self.assertEqual(
             self.location.address2,
             "La Serrezuela",
-            "La dirección 2 no se inicializó correctamente.")
+            "Address 2 was not initialized correctly.")
         self.assertEqual(
             self.location.zip_code,
             130001,
-            "El código postal no se inicializó correctamente."
+            "The zip code was not initialized correctly."
         )
 
     def test_zip_code_type_error(self):
-        """Verifica que se lanza un TypeError cuando el código postal ingresado no es un número entero"""
-        with self.assertRaises(TypeError, msg="El código postal debe ser un número entero"):
+        """Verify that a TypeError is raised when the entered zip code is not an integer"""
+        with self.assertRaises(
+            TypeError, msg="The zip code must be an integer"
+        ):
             self.location.zip_code = 300015.5
 
-        with self.assertRaises(TypeError, msg="El código postal debe ser un número entero"):
+        with self.assertRaises(
+            TypeError, msg="The zip code must be an integer"
+        ):
             self.location.zip_code = 300004.0
 
-        with self.assertRaises(TypeError, msg="El código postal debe ser un número entero"):
+        with self.assertRaises(
+            TypeError, msg="The zip code must be an integer"
+        ):
             self.location.zip_code = "Juan"
 
     def test_zip_code_value_error(self):
-        """Verifica que se lanza un ValueError cuando el código postal ingresado no es positivo"""
+        """Verify that a ValueError is raised when the entered zip code is not positive"""
         with self.assertRaises(ValueError):
             self.location.zip_code = 0
 
@@ -71,4 +76,3 @@ class TestLocation(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-    
