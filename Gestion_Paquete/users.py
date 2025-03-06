@@ -17,8 +17,8 @@ Classes:
 """
 from random import randbytes
 from bcrypt import hashpw, gensalt
-from location import Location
-from user_role import UserRole
+from Gestion_Paquete.location import Location
+from Gestion_Paquete.user_role import UserRole
 
 class User:
     def __init__(self, name: str, last_name: str, national_id: str, 
