@@ -1,5 +1,5 @@
 # import random
-from user import User
+from user import user
 from location import Location
 from package import Package
 
