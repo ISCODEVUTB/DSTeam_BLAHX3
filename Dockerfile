@@ -12,7 +12,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia el resto del código
-COPY . /app
+# COPY . /app
+COPY main.py .
+COPY Gestion_Paquetes/ ./Gestion_Paquetes/
 
 # Cambia al usuario no-root
 USER appuser
