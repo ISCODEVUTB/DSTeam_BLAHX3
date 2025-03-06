@@ -14,7 +14,7 @@ class TestDelivery(unittest.TestCase):
             position="Barranquilla",
         )
 
-    def test_track_init(self):
+    def test_delivery_init(self):
         """Verify that the initial values are equal to the ones assigned for the test """
         self.assertEqual(
             self.delivery.order,
