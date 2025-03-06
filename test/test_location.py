@@ -1,17 +1,19 @@
 import unittest
 from Gestion_Paquete.location import Location
 
+
 class TestLocation(unittest.TestCase):
 
     def setUp(self):
-        """Se ejecuta antes de cada prueba. Inicializar datos para Location con los cuales se van a hacer las pruebas posteriormente"""
+        """ Se ejecuta antes de cada prueba. I
+            Inicializar datos para Location con los cuales se van a hacer las pruebas posteriormente"""
         self.location = Location(
-            country = "Colombia",
-            department = "Bolivar",
-            city = "Cartagena de Indias",
-            address1 = "Cra. 11 #39-21, San Diego",
-            address2 = "La Serrezuela",
-            zip_code = 130001
+            country="Colombia",
+            department="Bolivar",
+            city="Cartagena de Indias",
+            address1="Cra. 11 #39-21, San Diego",
+            address2="La Serrezuela",
+            zip_code=130001
         )
 
     def test_init(self):
@@ -49,13 +51,13 @@ class TestLocation(unittest.TestCase):
 
     def test_zip_code_type_error(self):
         """Verifica que se lanza un TypeError cuando el código postal ingresado no es un número entero"""
-        with self.assertRaises(TypeError, msg = "El código postal debe ser un número entero"):
+        with self.assertRaises(TypeError, msg="El código postal debe ser un número entero"):
             self.location.zip_code = 300015.5
 
-        with self.assertRaises(TypeError, msg = "El código postal debe ser un número entero"):
+        with self.assertRaises(TypeError, msg="El código postal debe ser un número entero"):
             self.location.zip_code = 300004.0
 
-        with self.assertRaises(TypeError, msg = "El código postal debe ser un número entero"):
+        with self.assertRaises(TypeError, msg="El código postal debe ser un número entero"):
             self.location.zip_code = "Juan"
 
     def test_zip_code_value_error(self):
@@ -69,3 +71,4 @@ class TestLocation(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+    
