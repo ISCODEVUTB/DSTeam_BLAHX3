@@ -14,6 +14,7 @@ Classes:
 from random import randbytes
 from Gestion_Paquete.package_types import PackageTypes
 
+
 class Package:
     def __init__(self, weight: float, length: float, width: float, height: float):
         """
@@ -96,7 +97,6 @@ class Package:
         """
         self.__length = value
 
-
     @property
     def width(self) -> float:
         """
@@ -116,7 +116,6 @@ class Package:
             value (float): The new width in meters.
         """
         self.__width = value
-
 
     @property
     def height(self) -> float:
@@ -187,9 +186,9 @@ class Package:
         # Apply pricing limits
         return max(10, min(total_price, 500))
 
-
     def __str__(self):
         return f"Package(ID: {self.package_id}\nWeight: {self.weight} kg\nDimensions: {self.dimensions}\nType: {self.package_type}\nPrice: ${self.calculate_price():.2f})"
+
 
 def main():
     """
@@ -199,6 +198,7 @@ def main():
     """
     try_package = Package(25, "25*24")
     print(try_package)
+
 
 if __name__ == '__main__':
     main()
