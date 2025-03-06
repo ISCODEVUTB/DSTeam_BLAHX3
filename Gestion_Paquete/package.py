@@ -31,10 +31,10 @@ class Package:
             __package_type (str): The type of package, determined dynamically.
         """
         self.__package_id = str(uuid.uuid4())  # Generate a unique package ID
-        self.__weight = validate_positive_value(weight, "weight")
-        self.__length = validate_positive_value(length, "length")
-        self.__width = validate_positive_value(width, "width")
-        self.__height = validate_positive_value(height, "height")
+        self.__weight = validate_positive_value(weight)
+        self.__length = validate_positive_value(length)
+        self.__width = validate_positive_value(width)
+        self.__height = validate_positive_value(height)
         self.__package_type = self.typing_package()
 
     @property
@@ -187,19 +187,18 @@ class Package:
         return max(10, min(total_price, 500))
     
     @staticmethod
-    def validate_positive_value(value, name):
+    def validate_positive_value(value):
         """
         Validates that a given value is a positive number.
     
         Args:
             value (float): The value to validate.
-            name (str): The name of the parameter being validated.
     
         Raises:
             ValueError: If the value is less than or equal to zero.
         """
         if value <= 0:
-            raise ValueError(f"{name} must be greater than zero.")
+            raise ValueError(f"The value, {value} must be greater than zero.")
         return value
     
     def __str__(self):
