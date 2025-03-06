@@ -22,7 +22,7 @@ class TestUser(unittest.TestCase):
         # Get the password from the environment variable (if not defined, a default password is used)
         password = os.getenv("USER_PASSWORD", "default_password")
         self.user = User(
-            surname="Joe",
+            name="Joe",
             last_name="Doe",
             national_id="1037186420",
             email="joedoe@hotmail.com",
