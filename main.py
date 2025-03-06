@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route("/")
 
 def main():
-    app.run(host="0.0.0.0", port=7000)    
+    app.run(host="0.0.0.0", port=7680)    
     """
     Main entry point of the program.
 
