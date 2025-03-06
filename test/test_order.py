@@ -1,5 +1,4 @@
 import unittest
-import uuid
 from Gestion_Paquete.users import User
 from Gestion_Paquete.package import Package
 from Gestion_Paquete.order import Order
@@ -23,7 +22,6 @@ class TestOrder(unittest.TestCase):
 
         # Setup the Order with packages and users
         self.order = Order(
-            order_id=str(uuid.uuid4()),
             sender=self.sender,
             receiver=self.receiver,
             packages=[self.package1, self.package2]
@@ -31,7 +29,7 @@ class TestOrder(unittest.TestCase):
 
     def test_order_init(self):
         """Verify that the initial values are equal to the ones assigned for the test"""
-        self.assertEqual(self.order.sender, self.user, "The user was not initialized correctly.")
+        self.assertEqual(self.order.sender, self.sender, "The receiver was not initialized correctly.")
         self.assertEqual(self.order.receiver, self.receiver, "The receiver was not initialized correctly.")
         self.assertEqual(len(self.order.packages), 2, "The number of packages was not initialized correctly.")
         self.assertEqual(self.order.status, OrderStatus.PENDING.name, "The order status was not initialized correctly.")
@@ -46,7 +44,7 @@ class TestOrder(unittest.TestCase):
 
     def test_remove_package(self):
         """Verify that a package can be removed from the order"""
-        self.order.remove_package("10001")
+        self.order.remove_package(self.package1.package_id)
 
         # Assert that the package with ID 101 is no longer in the list
         removed_package = next((pkg for pkg in self.order.packages if pkg.package_id == self.package1.package_id), None)
@@ -64,3 +62,4 @@ class TestOrder(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+    
