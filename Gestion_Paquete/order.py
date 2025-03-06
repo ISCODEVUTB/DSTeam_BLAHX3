@@ -18,11 +18,12 @@ import uuid
 from typing import List
 from Gestion_Paquete.users import User
 from Gestion_Paquete.package import Package
+from Gestion_Paquete.order_status import OrderStatus
 
 
 class Order:
     def __init__(self, order_id: str, sender: User, receiver: User, 
-                 packages: List[Package], status: str):
+                 packages: List[Package], status: OrderStatus = OrderStatus.PENDING):
         """Initializes an Order with sender, receiver, packages, and status.
 
         Args:
@@ -36,7 +37,8 @@ class Order:
             __sender (User): The user sending the order.
             __receiver (User): The user receiving the order.
             __packages (List[Package]): A list of packages included in the order.
-            __status (str): The current status of the order.
+            __status (OrderStatus): The current status of the order.
+                                    Defaults to OrderStatus.PENDING
         """
         self.__order_id = str(uuid.uuid4())  # Generate a unique order ID
         self.__sender = sender
@@ -114,14 +116,14 @@ class Order:
         Returns:
             str: The order status.
         """
-        return self.__status
+        return self.__status.name
 
     @status.setter
-    def status(self, value: str):
+    def status(self, value: OrderStatus):
         """Sets the status of the order.
 
         Args:
-            value (str): The new status.
+            value (OrderStatus): The new status.
         """
         self.__status = value
 
