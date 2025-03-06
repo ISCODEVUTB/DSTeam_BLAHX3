@@ -4,74 +4,77 @@ from Gestion_Paquete.location import Location
 from Gestion_Paquete.users import User
 import bcrypt
 
+
 class TestUser(unittest.TestCase):
 
     def setUp(self):
-        """Se ejecuta antes de cada prueba. Inicializar datos para Location y User con los cuales se van a hacer las pruebas posteriormente"""
+        """ This is executed before each test.
+            Initializes data for Location and User which will be used for the tests later. """
         self.location = Location(
-            country = "Colombia",
-            department = "Bolivar",
-            city = "Cartagena de Indias",
-            address1 = "Cra. 11 #39-21, San Diego",
-            address2 = "La Serrezuela",
-            zip_code = 130001
+            country="Colombia",
+            department="Bolivar",
+            city="Cartagena de Indias",
+            address1="Cra. 11 #39-21, San Diego",
+            address2="La Serrezuela",
+            zip_code=130001
         )
 
-        # Obtén la contraseña desde la variable de entorno (si no está definida, se usa una contraseña predeterminada)
+        # Get the password from the environment variable (if not defined, a default password is used)
         password = os.getenv("USER_PASSWORD", "default_password")
         self.user = User(
-            surname = "Joe",
-            last_name = "Doe",
-            national_id = "1037186420",
-            email = "joedoe@hotmail.com",
-            address = self.location,
-            password = password
+            surname="Joe",
+            last_name="Doe",
+            national_id="1037186420",
+            email="joedoe@hotmail.com",
+            address=self.location,
+            password=password
         )
 
     def test_user_init(self):
-        """Verificar que los valores iniciales sean iguales a los asignados para la prueba"""
-        # assertEqual(first value, second value, message) Compara valores y mensaje en caso de que no sean iguales
+        """Verify that the initial values are equal to the ones assigned for the test"""
+        # assertEqual(first value, second value, message) Compares values and displays a message if they are not equal
         self.assertEqual(
             self.user.name,
             "Joe",
-            "El nombre no se inicializó correctamente."
+            "The first name was not initialized correctly."
         )
         self.assertEqual(
             self.user.last_name,
             "Doe",
-            "El apellido no se inicializó correctamente."
+            "The last name was not initialized correctly."
         )
         self.assertEqual(
             self.user.national_id,
             "1037186420",
-            "El ID nacional no se inicializó correctamente."
+            "The national ID was not initialized correctly."
         )
         self.assertEqual(
             self.user.email,
             "joedoe@hotmail.com",
-            "El correo electrónico no se inicializó correctamente."
+            "The email was not initialized correctly."
         )
         self.assertEqual(
             self.user.address,
             self.location,
-            "La dirección no se inicializó correctamente."
+            "The address was not initialized correctly."
         )
 
     def test_password_hashpwd(self):
-        """Verificar que el la función hashpwd cree un hash de la contraseña"""
+        """Verify that the hashpwd function creates a hash of the password"""
         original_password = self.user._password
         hashed_password = self.user.hashpwd(original_password)
-        # Comprobar que la constraseña no sea igual al hash
+        # Check that the password is not equal to the hash
         self.assertNotEqual(
             original_password,
             hashed_password,
-            "La contraseña no debe ser igual al hash"
+            "The password should not be equal to the hash"
         )
-        #Comprobar que el hash creado coincida con la contraseña actual
+        # Check that the created hash matches the original password
         self.assertTrue(
             bcrypt.checkpw(original_password, hashed_password),
-            "El hash de la contraseña no coincide con la original."
+            "The password hash does not match the original."
         )
+
 
 if __name__ == "__main__":
     unittest.main()
