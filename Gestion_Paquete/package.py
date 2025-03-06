@@ -11,7 +11,7 @@ Imports:
 Classes:
     - Package: Represents a package with an ID, weight, dimensions, and type.
 """
-from random import randbytes
+import uuid
 from Gestion_Paquete.package_types import PackageTypes
 
 
@@ -30,7 +30,7 @@ class Package:
             __dimensions (str): The dimensions of the package (LxWxH).
             __package_type (str): The type of package, determined dynamically.
         """
-        self.__package_id = randbytes(5).hex()  # Generate a unique package ID
+        self.__package_id = str(uuid.uuid4())  # Generate a unique package ID
         self.__weight = weight
         self.__length = length
         self.__width = width
