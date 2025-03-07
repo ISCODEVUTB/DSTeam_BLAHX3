@@ -34,16 +34,6 @@ jobs:
         run: |
           PYTHONPATH=$PWD pytest --cov=. --cov-report=term --cov-report=html --cov-report=xml || true
 
-      # Depuración en caso de error
-      - name: Debug PYTHONPATH (in case of errors)
-        if: failure()
-        run: python -c "import sys; print(sys.path)"
-
-      # Verificar si el directorio htmlcov existe antes de subirlo
-      - name: Check if coverage report exists
-        run: |
-          if [ -d "htmlcov" ]; then echo "Coverage report generated."; else echo "No coverage report found."; fi
-
       # Subir el reporte de cobertura
       - name: Upload coverage report
         if: success()
