@@ -40,7 +40,7 @@ class TestPayment(unittest.TestCase):
     def test_invalid_payment_method(self):
         """Verify that an invalid payment method raises an error"""
         with self.assertRaises(ValueError, msg="Invalid payment method"):
-            payment = Payment(12346, 250.00, "Cash", date(2024, 8, 19))
+            Payment(12346, 250.00, "Cash", date(2024, 8, 19))
 
 
 if __name__ == "__main__":
