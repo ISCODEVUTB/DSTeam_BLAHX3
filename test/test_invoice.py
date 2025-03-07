@@ -1,6 +1,6 @@
 import unittest
 from datetime import date
-from Gestion_Paquete.invoice import Invoice
+from src.invoice import Invoice
 
 
 class TestInvoice(unittest.TestCase):
