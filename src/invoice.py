@@ -2,7 +2,7 @@ from datetime import date
 
 
 class Invoice:
-    def __init__(self, invoice_id: int, amount: float, invoice_date: date, status: str):
+    def __init__(self, invoice_id: int, amount: float, invoice_date: date, status: int):
         self._invoice_id = invoice_id
         self._amount = amount
         self._invoice_date = invoice_date
