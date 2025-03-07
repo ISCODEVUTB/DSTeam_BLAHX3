@@ -11,7 +11,7 @@ Imports:
 Classes:
     - Package: Represents a package with an ID, weight, dimensions, and type.
 """
-1import uuid
+import uuid
 from src.package_types import PackageTypes
 
 
