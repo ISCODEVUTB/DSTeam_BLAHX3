@@ -1,7 +1,7 @@
 import unittest
 import os
-from Gestion_Paquete.location import Location
-from Gestion_Paquete.users import User
+from src.location import Location
+from src.users import User
 import bcrypt
 
 
