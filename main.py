@@ -240,7 +240,7 @@ def new_order():
         elif option > 3 and package_list is not None:
             new_order = Order(sender, receiver, package_list)
             if option == 4:
-                receipt()
+                receipt(new_order)
                 return
             elif option == 5:
                 print(new_order)
