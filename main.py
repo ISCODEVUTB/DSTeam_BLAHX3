@@ -6,11 +6,12 @@ from src.package import Package
 from src.order import Order
 from flask_wtf.csrf import CSRFProtect  
 
-
 app = Flask(__name__)
-csrf = CSRFProtect(app) 
-app.run(debug=True)
+csrf = CSRFProtect(app)  
+
 @app.route("/")
+def home():
+    return "Welcome to the Flask App"
 
 def main():
     """
