@@ -7,6 +7,7 @@ from src.order import Order
 
 
 app = Flask(__name__)
+app.run(debug=True)
 @app.route("/")
 
 def main():
