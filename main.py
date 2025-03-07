@@ -4,9 +4,11 @@ from src.users import User
 from src.location import Location
 from src.package import Package
 from src.order import Order
+from flask_wtf.csrf import CSRFProtect  
 
 
 app = Flask(__name__)
+csrf = CSRFProtect(app) 
 app.run(debug=True)
 @app.route("/")
 
