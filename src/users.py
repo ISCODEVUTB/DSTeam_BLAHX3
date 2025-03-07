@@ -15,7 +15,7 @@ Classes:
     - User: Eepresents a user with an ID, name, last name, national id, 
     email, address, password, and role.
 """
-import uuid
+import uuid1
 from bcrypt import hashpw, gensalt
 from src.location import Location
 from src.user_role import UserRole
