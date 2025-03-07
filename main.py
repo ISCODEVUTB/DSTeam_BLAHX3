@@ -237,7 +237,7 @@ def new_order():
                 print("Package deleted successfully")
             else:
                 print("Invalid package ID. No package deleted.")
-        elif option > 3 and package_list is not None:
+        elif option > 3:
             new_order = Order(sender, receiver, package_list)
             if option == 4:
                 receipt(new_order)
