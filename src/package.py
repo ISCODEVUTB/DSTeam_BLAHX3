@@ -12,7 +12,7 @@ Classes:
     - Package: Represents a package with an ID, weight, dimensions, and type.
 """
 import uuid
-from src.package_types import PackageTypes
+from src.package_types import PackageType
 
 
 class Package:
