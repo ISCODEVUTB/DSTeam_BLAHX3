@@ -47,7 +47,7 @@ class Order:
         self.__status = status
 
     @property
-    def order_id(self) -> int:
+    def order_id(self) -> str:
         """Gets the unique order ID.
 
         Returns:
