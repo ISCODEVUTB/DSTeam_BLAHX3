@@ -1,5 +1,5 @@
 class Track:
-    def __init__(self, track_id: int, track_type: str, max_weight: float, current_weight: float, status: str):1
+    def __init__(self, track_id: int, track_type: str, max_weight: float, current_weight: float, status: str):
         self.__track_id = track_id
         self.__track_type = track_type
         self.__max_weight = max_weight
