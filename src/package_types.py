@@ -1,4 +1,4 @@
-from enum import Enum1
+from enum import Enum
 
 
 class PackageTypes(Enum):
