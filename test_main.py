@@ -95,6 +95,36 @@ class TestMainFunctions(unittest.TestCase):
         self.assertEqual(result, 0)  # Invalid package ID, should not delete any package
         mock_print.assert_any_call("Invalid package ID. No package deleted.")
 
+@patch("builtins.print")
+    def test_output_receipt(self, mock_print, receipt):
+        """Test the print of receipt function"""
+
+        # Create a sender and receiver
+        sender_location = Location("USA", "California", "Los Angeles", "Main St", "Apt 2", 90210)
+        receiver_location = Location("USA", "California", "San Francisco", "Oak St", "Apt 1", 94110)
+
+        sender = User("Gracie", "Abrams", "1944682", "gracie.abrams@gmail.com", sender_location, "Gatito123*")
+        receiver = User("Jane", "Smith", "9995879", "jane.smith@gmail.com", receiver_location, "*Perrito456")
+
+        # Create a couple of packages
+        package1 = Package(5.2, 2, 5, 5)
+        package2 = Package(3.1, 1.5, 4, 4.5)
+
+        # Create an order
+        package_list = [package1, package2]
+        order = Order(sender, receiver, package_list)
+
+        receipt(order)
+
+        # Check if the output includes the relevant information
+        mock_print.assert_any_call("\t*****  RECEIPT  *****")
+        mock_print.assert_any_call(f"\nOrder ID: {order.order_id}")
+        mock_print.assert_any_call(f"\n\nRECEIVER: {order.receiver.name} ({order.receiver.user_id})")
+        mock_print.assert_any_call(f"RECEIVER ADDRESS: {order.receiver.address.city + ',' + order.receiver.address.address1}")
+        mock_print.assert_any_call(f"SENDER: {sender.name} ({sender.user_id})")
+        mock_print.assert_any_call(f"SENDER ADDRESS: {sender.address.city + ',' + sender.address.address1}")
+        mock_print.assert_any_call("Total: 62.6 USD")
+
 
 if __name__ == '__main__':
     unittest.main()
