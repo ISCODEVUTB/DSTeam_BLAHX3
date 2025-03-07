@@ -1,4 +1,4 @@
-1import uuid
+import uuid
 
 
 class Location:
