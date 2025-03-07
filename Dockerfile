@@ -14,13 +14,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copia el resto del código
 # COPY . /app
 COPY main.py .
-COPY Gestion_Paquete/ ./Gestion_Paquete/
+COPY src/ ./src/
 
 # Cambia al usuario no-root
 USER appuser
 
 # Expone el puerto que usa la aplicación
-EXPOSE 7680
+EXPOSE 8080
 
 # Comando para iniciar la aplicación
 CMD ["python", "main.py"]
