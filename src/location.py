@@ -192,7 +192,7 @@ def main():
         print(alex_location)
 
         # Testing postal code validation with an invalid code
-        invalid_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", -130001)  # This should raise a ValueError
+        Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", -130001)  # This should raise a ValueError
     except Exception as e:
         print(f"Error: {e}")
 
