@@ -1,5 +1,5 @@
 from enum import Enum
-from datetime import date1
+from datetime import date
 
 
 class PaymentMethod(Enum):
