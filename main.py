@@ -283,7 +283,7 @@ def receipt(order: Order):
     print(f"\n\n\tPACKEGES")
     print(package_info)
     print(f"\n\nSENDER: {order.sender.name} ({order.sender.user_id})")
-    print(f"RECEIVER ADDRESS: {order.sender.address.city + ',' + order.sender.address.address1}")
+    print(f"SENDER ADDRESS: {order.sender.address.city + ',' + order.sender.address.address1}")
     print("\n-----------------------------------")
     print(f"Total: {total} USD")
 
