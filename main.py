@@ -1,9 +1,9 @@
 from typing import List
 from flask import Flask
-from Gestion_Paquete.users import User
-from Gestion_Paquete.location import Location
-from Gestion_Paquete.package import Package
-from Gestion_Paquete.order import Order
+from src.users import User
+from src.location import Location
+from src.package import Package
+from src.order import Order
 
 
 app = Flask(__name__)
