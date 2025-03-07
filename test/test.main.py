@@ -120,7 +120,8 @@ class TestMainFunctions(unittest.TestCase):
         mock_print.assert_any_call("\t*****  RECEIPT  *****")
         mock_print.assert_any_call(f"\nOrder ID: {order.order_id}")
         mock_print.assert_any_call(f"\n\nRECEIVER: {order.receiver.name} ({order.receiver.user_id})")
-        mock_print.assert_any_call(f"RECEIVER ADDRESS: {order.receiver.address.city + ',' + order.receiver.address.address1}")
+        mock_print.assert_any_call(f"RECEIVER ADDRESS: {order.receiver.address.city + ',' 
+                                                        + order.receiver.address.address1}")
         mock_print.assert_any_call(f"SENDER: {sender.name} ({sender.user_id})")
         mock_print.assert_any_call(f"SENDER ADDRESS: {sender.address.city + ',' + sender.address.address1}")
         mock_print.assert_any_call("Total: 62.6 USD")
