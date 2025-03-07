@@ -41,6 +41,17 @@ class TestMainFunctions(unittest.TestCase):
     @patch("builtins.print")  # Parcheamos `print` para interceptar las salidas
     def test_show_packages(self, mock_print):
         """Test show_packages function with mocked data"""
+        user = new_user("client")
+        package1 = Package(5.2, 2, 5, 5)
+        package2 = Package(10, 3, 4.1, 6.8)
+        package_list = [package1, package2]
+
+        # Mock print to test what is being output
+        show_packages(package_list, user)
+        mock_print.assert_any_call("Packages due to be sent to: Gracie Abrams")
+        mock_print.assert_any_call(f"Package 1\n{package1}\n")
+        mock_print.assert_any_call(f"Package 2\n{package2}\n")def test_show_packages(self, mock_print):
+        """Test show_packages function with mocked data"""
         user_location = Location("USA", "California", "Los Angeles", "Main St", "Apt 2", 90212)
         user = new_user("Gracie", "Abrams", "1944682", "gracie.abrams@gmail.com", user_location, "Gatito123*")
         package1 = Package(5.2, 2, 5, 5)
