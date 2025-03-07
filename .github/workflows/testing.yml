@@ -25,45 +25,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      # Paso de Pruebas
-      - name: Run tests
-        env:
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-        run: PYTHONPATH=$PWD python -m pytest test/
-
-      # Depuración: Si ocurre un error, imprime el sys.path
-      - name: Debug PYTHONPATH (in case of errors)
-        if: failure()
-        run: python -c "import sys; print(sys.path)"
-
-name: Run Tests
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
           pip install pytest pytest-cov  # Asegurar que pytest y pytest-cov están instalados
 
       # Ejecutar pruebas y generar reporte de cobertura
