@@ -8,11 +8,10 @@ from main import new_user, new_location, new_package, show_packages, delete_pack
 
 
 class TestMainFunctions(unittest.TestCase):
+    @patch("builtins.input", side_effect=["Gracie", "Abrams", "1944682", "gracie.abrams@gmail.com", None, "Gatito123*"])
     def test_new_user(self):
         """Test new_user function"""
-        user_location = Location("USA", "California", "Los Angeles", "Main St", "Apt 2", 90212)
-        user = new_user("Gracie", "Abrams", "1944682", "gracie.abrams@gmail.com", user_location, "Gatito123*")
-
+        user = new_user("cliente")
         self.assertEqual(user.name, "Gracie")
         self.assertEqual(user.last_name, "Abrams")
         self.assertEqual(user.national_id, "1944682")
@@ -20,19 +19,20 @@ class TestMainFunctions(unittest.TestCase):
         self.assertEqual(user.location.country, "USA")
         self.assertEqual(user.location.zip_code, 90212)
 
+    @patch("builtins.input", side_effect=["USA", "California", "Los Angeles", "Main St", "Apt 2", 90212])
     def test_new_location(self):
         """Test new_location function"""
-        location = new_location("USA", "California", "Los Angeles", "Main St", "Apt 2", 90212)
-
+        location = new_location("Gracie")
         self.assertEqual(location.country, "USA")
         self.assertEqual(location.department, "California")
         self.assertEqual(location.city, "Los Angeles")
         self.assertEqual(location.address1, "Main St")
         self.assertEqual(location.zip_code, 90001)
 
+    @patch("builtins.input", side_effect=[5.2, 2, 5, 5])
     def test_new_package(self):
         """Test new_package function"""
-        package = new_package(5.2, 2, 5, 5)
+        package = new_package()
         self.assertEqual(package.weight, 5.2)
         self.assertEqual(package.length, 2)
         self.assertEqual(package.width, 5)
