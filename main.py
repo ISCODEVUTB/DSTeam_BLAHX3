@@ -9,16 +9,13 @@ from src.order import Order
 app = Flask(__name__)
 @app.route("/")
 
-in_user: User = [None]
-recipient_list: List[User] = []
-order_list: List[Order] = []
-
 def main():
     """
     Main entry point of the program.
 
     This function serves as the starting point of execution.
     """
+
     app.run(host="0.0.0.0", port=9876)   
     main_menu()
 
@@ -220,12 +217,9 @@ def new_order():
     - Manages package operations (adding, showing, deleting).
     - Generates a receipt or exits the order process.
     """
-    if in_user[0] is None:
-        in_user[0] = new_user("sender")
-
+    sender = new_user("sender")
     print()
     receiver: User = new_user("receiver")
-    recipient_list.append(receiver)
 
     package_list: list = []
 
@@ -244,12 +238,12 @@ def new_order():
             else:
                 print("Invalid package ID. No package deleted.")
         elif option > 3 and package_list is not None:
-            order_list.append(Order(in_user[0], recipient_list[0], package_list))
+            new_order = Order(sender, receiver, package_list)
             if option == 4:
                 receipt()
                 return
             elif option == 5:
-                print(order_list[0])
+                print(new_order)
                 option = 0
                 while option not in ('y', 'n'):
                     option = input("Quieres parar la Orden? (Y/N)").lower()
@@ -258,7 +252,7 @@ def new_order():
                     elif option == "n":
                         continue
 
-def receipt():
+def receipt(order: Order):
     """
     Generates and prints a detailed receipt for the first order in the `order_list`.
 
@@ -276,20 +270,20 @@ def receipt():
     - Each package in `order_list[0].packages` has a `calculate_price()` method.
     - `recipient_list[0]` and `in_user[0]` have attributes such as `name`, `user_id`, and `address`.
     """
-    package_info = ', '.join(str(pkg) for pkg in order_list[0].packages)
+    package_info = ', '.join(str(pkg) for pkg in order.packages)
     total = 0
-    for pkg in order_list[0].packages:
+    for pkg in order.packages:
         total = total + pkg.calculate_price()
 
     print()
     print("\t*****  RECEIPT  *****")
-    print(f"\nOrder ID: {order_list[0].order_id}")
-    print(f"\n\nRECEIVER: {recipient_list[0].name} ({recipient_list[0].user_id})")
-    print(f"RECEIVER ADDRESS: {recipient_list[0].address.city + ',' + recipient_list[0].address.address1}")
+    print(f"\nOrder ID: {order.order_id}")
+    print(f"\n\nRECEIVER: {order.receiver.name} ({order.receiver.user_id})")
+    print(f"RECEIVER ADDRESS: {order.receiver.address.city + ',' + order.receiver.address.address1}")
     print(f"\n\n\tPACKEGES")
     print(package_info)
-    print(f"\n\nSENDER: {in_user[0].name} ({in_user[0].user_id})")
-    print(f"RECEIVER ADDRESS: {in_user[0].address.city + ',' + in_user[0].address.address1}")
+    print(f"\n\nSENDER: {order.sender.name} ({order.sender.user_id})")
+    print(f"RECEIVER ADDRESS: {order.sender.address.city + ',' + order.sender.address.address1}")
     print("\n-----------------------------------")
     print(f"Total: {total} USD")
 
