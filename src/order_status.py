@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enu
 
 
 class OrderStatus(Enum):
