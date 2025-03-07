@@ -2,7 +2,7 @@ from src.track import Track
 
 
 class Delivery:
-    def __init__(self, order: int, status: str, track: Track, driver_id: int, position: int):
+    def __init__(self, order: int, status: str, track: Track, driver_id: int, position: str):
         self.__order = order
         self.__status = status
         self.__track = track
