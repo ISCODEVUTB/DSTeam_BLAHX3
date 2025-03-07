@@ -1,9 +1,9 @@
 import unittest
-from Gestion_Paquete.users import User
-from Gestion_Paquete.package import Package
-from Gestion_Paquete.order import Order
-from Gestion_Paquete.location import Location
-from Gestion_Paquete.order_status import OrderStatus
+from src.users import User
+from src.package import Package
+from src.order import Order
+from src.location import Location
+from src.order_status import OrderStatus
 
 
 class TestOrder(unittest.TestCase):
