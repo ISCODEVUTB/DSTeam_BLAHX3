@@ -201,17 +201,3 @@ class Package:
     
     def __str__(self):
         return f"Package(ID: {self.package_id}\nWeight: {self.weight} kg\nDimensions: {self.dimensions}\nType: {self.package_type}\nPrice: ${self.calculate_price():.2f})"
-
-
-def main():
-    """
-    Main entry point of the program.
-
-    This function tests the Package class.
-    """
-    try_package = Package(25, "25*24")
-    print(try_package)
-
-
-if __name__ == '__main__':
-    main()
