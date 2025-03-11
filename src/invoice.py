@@ -45,12 +45,6 @@ class Invoice:
                 f"Date: {self.invoice_date.strftime('%Y-%m-%d')}, Status: {self.status})")
 
 
-# Prueba de la clase
-def main():
+if __name__ == "__main__":
     invoice_example = Invoice(14873, 254, invoice_date=date(2023, 4, 5), status="Entregado")
     print(invoice_example)
-
-
-if __name__ == "__main__":
-    main()
-    
