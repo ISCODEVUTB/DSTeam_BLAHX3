@@ -209,18 +209,9 @@ class User:
 
     def __str__(self):
         return f"ID: {self.user_id}\nRole: {self.role}\nName: {self.name}\nLast-name: {self.last_name}\nNational-id:{self.national_id}\nEmail: {self.email}\nAddress: ({self.address})"
-
-
-def main():
-    """
-    Main entry point of the program.
-
-    This function tests the User class.
-    """
-    alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", 130001)
-    alex = User("Alex", "Pres", "230495", "a@gmail.com", alex_location, "Rococco")
-    print(alex)
     
 
 if __name__ == '__main__':
-    main()
+    alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", 130001)
+    alex = User("Alex", "Pres", "230495", "a@gmail.com", alex_location, "Rococco")
+    print(alex)
