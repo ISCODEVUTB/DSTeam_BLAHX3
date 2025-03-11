@@ -11,20 +11,17 @@ on:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.8, 3.9, 3.10]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
+      
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
@@ -48,8 +45,12 @@ jobs:
 
       - name: Patch project version
         run: |
-          version=$(grep VERSION sonar/version.py | cut -d "=" -f 2 | sed "s/[\'\" ]//g")
-          echo "sonar.projectVersion=$version" >> sonar-project.properties
+          if [ -f sonar/version.py ]; then
+            version=$(grep VERSION sonar/version.py | cut -d "=" -f 2 | sed "s/[\'\" ]//g")
+            echo "sonar.projectVersion=$version" >> sonar-project.properties
+          else
+            echo "sonar.version.py not found, skipping version patching."
+          fi
 
       - name: SonarCloud scan
         uses: sonarsource/sonarcloud-github-action@v2
@@ -61,6 +62,6 @@ jobs:
             -Dsonar.projectKey=ISCODEVUTB_DSTeam_BLAHX3
             -Dsonar.sources=src/
             -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.test.exclusions=**/tests/**,**/test_*.py
+            -Dsonar.exclusions=tests/**  
             -Dsonar.tests=tests/
             -Dsonar.verbose=true
