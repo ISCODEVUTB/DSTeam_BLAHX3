@@ -230,31 +230,34 @@ def new_order():
     while True:
         option: int = order_menu()
 
-        if option == 1:
-            package: Package = new_package()
-            print(f"Package created ({package.package_id})")
-            package_list.append(package)
-        elif option == 2:
-            show_packages(package_list, receiver)
-        elif option == 3:
-            if delete_package(package_list) == 1:
-                print("Package deleted successfully")
-            else:
-                print("Invalid package ID. No package deleted.")
-        elif option > 3:
-            new_order = Order(sender, receiver, package_list)
-            if option == 4:
-                receipt(new_order)
-                return
-            elif option == 5:
-                print(new_order)
-                option = 0
-                while option not in ('y', 'n'):
-                    option = input("Quieres parar la Orden? (Y/N)").lower()
-                    if option == "y":
-                        return
-                    elif option == "n":
-                        continue
+        match option:
+            case 1:
+                package = new_package()
+                print(f"Package created ({package.package_id})")
+                package_list.append(package)
+            case 2:
+                show_packages(package_list, receiver)
+            case 3:
+                if delete_package(package_list) == 1:
+                    print("Package deleted successfully")
+                else:
+                    print("Invalid package ID. No package deleted.")
+            case 4 | 5:
+                new_order = Order(sender, receiver, package_list)
+                if option == 4:
+                    receipt(new_order)
+                    return
+                elif option == 5:
+                    print(new_order)
+                    option = 0
+                    while option not in ('y', 'n'):
+                        option = input("Quieres parar la Orden? (Y/N)").lower()
+                        if option == "y":
+                            return
+                        elif option == "n":
+                            continue
+            case _:
+                print("Invalid option.")
 
 def receipt(order: Order):
     """
