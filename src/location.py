@@ -180,22 +180,6 @@ class Location:
         return f"ID: {self.location_id}\nCountry: {self.country}\nDepartment: {self.department}\nCity: {self.city}\nAddress-1: {self.address1}\nAddress-2: {self.address2}\nZip-Code: {self.zip_code}"
 
 
-def main():
-    """
-    Main entry point of the program.
-
-    This function tests the Location class.
-    """
-    try:
-        # Testing the Location class
-        alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", 130001)
-        print(alex_location)
-
-        # Testing postal code validation with an invalid code
-        Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", -130001)  # This should raise a ValueError
-    except Exception as e:
-        print(f"Error: {e}")
-
-
 if __name__ == '__main__':
-    main()
+    alex_location = Location("Colombia", "Bolivar", "Cartagena", "CRA", "Blas", 130001)
+    print(alex_location)
