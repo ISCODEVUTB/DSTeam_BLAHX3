@@ -37,23 +37,13 @@ jobs:
           else
             echo "No run_linters.sh found, skipping linters."
           fi
-
       - name: Run tests and generate coverage
         run: |
-          pytest --cov=src --cov-report=xml --cov-report=term
-
+          pytest --cov=src --cov-report=xml:coverage.xml --cov-report=term
+      
       - name: Check if coverage report exists
         run: ls -l coverage.xml || echo "coverage.xml not found"
-
-      - name: Patch project version
-        run: |
-          if [ -f sonar/version.py ]; then
-            version=$(python -c "import re; f=open('sonar/version.py').read(); print(re.search(r'VERSION\s*=\s*[\'\"]([^\'\"]+)[\'\"]', f).group(1))")
-            echo "sonar.projectVersion=$version" >> sonar-project.properties
-          else
-            echo "sonar.version.py not found, skipping version patching."
-          fi
-
+      
       - name: SonarCloud scan
         uses: sonarsource/sonarcloud-github-action@v2
         env:
@@ -62,8 +52,8 @@ jobs:
           args: >
             -Dsonar.organization=deviscoutb
             -Dsonar.projectKey=ISCODEVUTB_DSTeam_BLAHX3
-            -Dsonar.sources=.
+            -Dsonar.sources=src
             -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.exclusions=**/tests/**
-            -Dsonar.tests=tests
+            -Dsonar.exclusions=**/teste/**
+            -Dsonar.tests=teste
             -Dsonar.verbose=true
