@@ -1,4 +1,4 @@
-name: My Test
+name: SonarQube Analysis
 
 on:
   push:
@@ -11,16 +11,17 @@ jobs:
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  
+          fetch-depth: 0  # Obtiene el historial completo para el análisis de SonarQube
 
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.10' # Asegura que sea la versión correcta
+          python-version: '3.10'  # Asegura la versión correcta de Python
 
       - name: Install dependencies
         run: |
@@ -30,7 +31,13 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest --cov=src --cov-report=xml --cov-report=term
+          pytest --cov=. --cov-report=xml --cov-report=term
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.xml  # Guarda el reporte de cobertura como artefacto
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
