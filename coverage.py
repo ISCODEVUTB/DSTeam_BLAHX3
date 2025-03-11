@@ -1,10 +1,16 @@
 [tox]
 envlist = py39
 skipsdist = True
- 
+ 
 [testenv]
 deps =
-    pytest
-    pytest-cov
-commands = pytest --cov=ISCODEVUTB_DSTeam_BLAHX3 --cov-report=xml --cov-config=tox.ini --cov-branch
- 
+    pytest
+    coverage
+commands =
+    coverage run -m pytest
+    coverage xml
+ 
+[coverage:run]
+relative_files = True
+source = my_project/
+branch = True
