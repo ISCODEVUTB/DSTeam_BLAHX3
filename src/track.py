@@ -50,12 +50,3 @@ class Track:
         return (f"Track(ID: {self.track_id}, Type: {self.track_type}, "
                 f"Max Weight: {self.max_weight}, Current Weight: {self.current_weight}, "
                 f"Status: {self.status})")
-
-
-def main():
-    track_example = Track(456123, "Dunno", 50, 20, "Entregado")
-    print(track_example)
-
-
-if __name__ == '__main__':
-    main()
