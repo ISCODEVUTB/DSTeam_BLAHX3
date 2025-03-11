@@ -30,7 +30,7 @@ jobs:
 
       - name: Run tests and generate coverage report
         run: |
-          pytest --junitxml=test/reports/xunit.xml --cov=src --cov-report=xml --cov-report=html
+          pytest --junitxml=test/reports/xunit.xml --cov=src --cov-report=xml:test/reports/coverage.xml --cov-report=html:test/reports/html
 
       - name: Upload coverage report as artifact
         uses: actions/upload-artifact@v4
@@ -38,19 +38,10 @@ jobs:
           name: coverage-report
           path: test/reports/coverage.xml
 
-      - name: SonarCloud Scan
+      - name: Upload Coverage Report to SonarCloud
         uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          projectBaseDir: .
-          args: >
-            -Dsonar.projectKey=ISCODEVUTB_DSTeam_BLAHX3
-            -Dsonar.organization=deviscoutb
-            -Dsonar.python.version=3.10
-            -Dsonar.sources=src
-            -Dsonar.tests=test
-            -Dsonar.sourceEncoding=UTF-8
-            -Dsonar.exclusions=**/migrations/**,**/*.pyc,**/__pycache__/**,venv/**,docs/**
-            -Dsonar.python.xunit.reportPath=test/reports/xunit.xml
-            -Dsonar.coverageReportPaths=test/reports/coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.coverageReportPaths=test/reports/coverage.xml
