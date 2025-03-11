@@ -1,0 +1,56 @@
+name: SonarCloud Analysis
+
+on:
+  push:
+    branches:
+      - main  # Cambia esto si tu rama principal tiene otro nombre
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sonarcloud:
+    name: SonarCloud Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov pylint
+
+      - name: Run tests and generate coverage report
+        run: |
+          pytest --junitxml=test/reports/xunit.xml --cov=src --cov-report=xml --cov-report=html
+
+      - name: Upload coverage report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: test/reports/coverage.xml
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.projectKey=ISCODEVUTB_DSTeam_BLAHX3
+            -Dsonar.organization=deviscoutb
+            -Dsonar.python.version=3.10
+            -Dsonar.sources=src
+            -Dsonar.tests=test
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.exclusions=**/migrations/**,**/*.pyc,**/__pycache__/**,venv/**,docs/**
+            -Dsonar.python.xunit.reportPath=test/reports/xunit.xml
+            -Dsonar.coverageReportPaths=test/reports/coverage.xml
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
