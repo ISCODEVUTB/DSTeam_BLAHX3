@@ -166,7 +166,7 @@ El proyecto cuenta con integración continua a través de GitHub Actions:
 ## Colaboradores
 - Jesus Julio
 - Ana Meza
-- Isabella Ordozgoitia
+- Isabella Ordosgoitia
 - Kathy Otero
 - Alejandro Villareal
 
